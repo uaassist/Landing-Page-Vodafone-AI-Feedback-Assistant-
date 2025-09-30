@@ -49,20 +49,27 @@ h3 { font-size: 1.3em; font-weight: 600; }
 .process-step { display: flex; align-items: center; }
 .step-number { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background-image: var(--primary-gradient); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 20px; }
 
-/* --- Case Study Section (with corrections) --- */
+/* --- Case Study Section (NEW ROBUST IMPLEMENTATION) --- */
 .case-study-section { padding: 50px 0; }
-.case-study-comparison { display: flex; gap: 30px; }
+
+.case-study-comparison {
+    display: grid; /* Use Grid for robust layout */
+    grid-template-columns: repeat(2, 1fr); /* Create two equal columns */
+    gap: 30px;
+    align-items: stretch; /* Ensure grid items stretch to fill height */
+}
+
 .case-column {
-    flex: 1;
-    display: flex;
+    display: flex; /* Use Flexbox for internal alignment */
     flex-direction: column;
 }
+
 .response-card {
     padding: 25px;
     border-radius: 12px;
     border: 1px solid var(--border-color);
     background: var(--card-background);
-    flex-grow: 1; /* Ensures cards have equal height */
+    flex-grow: 1; /* Allow card to grow within the flex column */
 }
 .verdict-analysis { margin-top: 20px; padding-top: 15px; }
 .verdict-analysis.error h4 { color: var(--error-text-color); }
@@ -147,5 +154,10 @@ h3 { font-size: 1.3em; font-weight: 600; }
     body { padding-top: 60px; }
     h1 { font-size: 2.2em; }
     .nav-links { display: none; }
-    .strategic-benefits, .key-results, .case-study-comparison { flex-direction: column; gap: 20px; }
+    .strategic-benefits, .key-results { flex-direction: column; gap: 20px; }
+    
+    /* Responsive grid for case study */
+    .case-study-comparison {
+        grid-template-columns: 1fr; /* Stack columns on mobile */
+    }
 }
