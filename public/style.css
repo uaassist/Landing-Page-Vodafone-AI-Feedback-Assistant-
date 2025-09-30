@@ -51,14 +51,49 @@ h3 { font-size: 1.3em; font-weight: 600; }
 .process-step { display: flex; align-items: center; }
 .step-number { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background-image: var(--primary-gradient); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 20px; }
 
+/* --- Case Study Section --- */
 .case-study-section { padding: 50px 0; }
 .case-study-comparison { display: flex; gap: 30px; }
-.case-column { flex: 1; }
-.response-card { padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--card-background); }
+
+/* CORRECTED RULE: Makes the column a flex container */
+.case-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CORRECTED RULE: Makes the card grow to fill the available space */
+.response-card {
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--card-background);
+    flex-grow: 1; /* This is the key fix */
+}
+
 .verdict-analysis { margin-top: 20px; padding-top: 15px; }
 .verdict-analysis.error h4 { color: var(--error-text-color); }
 .verdict-analysis.success h4 { color: var(--success-text-color); }
-.verdict-analysis ul { margin: 0; padding-left: 0; list-style: none; }
+
+.verdict-analysis ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+/* NEW RULE: Improves alignment of icons and text */
+.verdict-analysis ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7em;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 0.5em;
+}
+
+.verdict-analysis ul li strong {
+    color: var(--text-light);
+}
 
 .key-results { display: flex; gap: 20px; text-align: center; }
 .result-item { flex: 1; }
@@ -126,3 +161,4 @@ h3 { font-size: 1.3em; font-weight: 600; }
     .strategic-benefits, .key-results, .case-study-comparison { flex-direction: column; gap: 20px; }
 
 }
+
