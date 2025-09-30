@@ -35,8 +35,13 @@ h3 { font-size: 1.3em; font-weight: 600; }
 .card { background-color: var(--card-background); backdrop-filter: blur(5px); padding: 40px; border-radius: 16px; margin-bottom: 40px; border: 1px solid var(--border-color); }
 .cta-button { display: inline-block; padding: 15px 30px; font-size: 1.1em; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; }
 
+/* --- Hero & Features --- */
 .hero-section { text-align: center; padding: 60px 20px; margin-bottom: 60px; }
-.client-logo { max-height: 50px; margin-bottom: 30px; filter: brightness(0) invert(1); }
+.client-logo {
+    max-height: 50px;
+    margin-bottom: 30px;
+    /* REMOVED: The problematic filter rule is no longer needed */
+}
 .primary-cta { background-image: var(--primary-gradient); color: white; }
 .strategic-benefits { display: flex; gap: 30px; margin-top: 40px; }
 .benefit-item { flex: 1; text-align: center; padding: 25px; background-color: rgba(17, 24, 39, 0.5); border-radius: 12px; border: 1px solid var(--border-color); }
@@ -119,4 +124,5 @@ h3 { font-size: 1.3em; font-weight: 600; }
     h1 { font-size: 2.2em; }
     .nav-links { display: none; }
     .strategic-benefits, .key-results, .case-study-comparison { flex-direction: column; gap: 20px; }
+
 }
