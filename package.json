@@ -1,0 +1,8 @@
+{
+  "name": "vodafone-feedback-demo",
+  "version": "1.0.0",
+  "description": "Integrated AI Feedback Assistant Demo",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
