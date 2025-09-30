@@ -19,112 +19,94 @@ body { font-family: 'Inter', sans-serif; background-color: var(--background-dark
 
 .gradient-text { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
 
+/* ... (Nav, Hero, etc. styles are correct and unchanged) ... */
 .main-nav { background: rgba(17, 24, 39, 0.8); backdrop-filter: blur(10px); padding: 0 40px; border-bottom: 1px solid var(--border-color); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
 .nav-content { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; height: 80px; }
 .nav-logo img { height: 30px; }
 .nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; }
 .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; }
 .nav-cta { background-image: var(--primary-gradient); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; }
-
 .landing-container { max-width: 840px; margin: 0 auto; padding: 40px 20px; }
 h1, h2, h3 { color: var(--text-dark-primary); }
 h1 { font-size: 3em; font-weight: 800; line-height: 1.2; }
 h2 { font-size: 2.2em; font-weight: 700; }
 h3 { font-size: 1.3em; font-weight: 600; }
+.section-headline { text-align: center; margin-bottom: 40px; }
 .card { background-color: var(--card-background); backdrop-filter: blur(5px); padding: 40px; border-radius: 16px; margin-bottom: 40px; border: 1px solid var(--border-color); }
 .cta-button { display: inline-block; padding: 15px 30px; font-size: 1.1em; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; }
-
 .hero-section { text-align: center; padding: 60px 20px; margin-bottom: 60px; }
-.client-logo {
-    max-height: 50px;
-    margin-bottom: 30px;
-}
+.client-logo { max-height: 50px; margin-bottom: 30px; }
 .primary-cta { background-image: var(--primary-gradient); color: white; }
 .strategic-benefits { display: flex; gap: 30px; margin-top: 40px; }
 .benefit-item { flex: 1; text-align: center; padding: 25px; background-color: rgba(17, 24, 39, 0.5); border-radius: 12px; border: 1px solid var(--border-color); }
 
-.process-section { padding: 50px 0; }
-.process-steps { display: flex; flex-direction: column; gap: 20px; }
-.process-step { display: flex; align-items: center; }
-.step-number { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background-image: var(--primary-gradient); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 20px; }
-
-/* --- Case Study Section (DEFINITIVE ROBUST FIX) --- */
-.case-study-section { padding: 50px 0; }
-
-.section-headline-red {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.2em;
+/* --- Process Section (DEFINITIVE ROBUST FIX) --- */
+.process-section {
+    padding: 50px 0;
+}
+.process-section .section-headline {
+    color: var(--text-dark-primary); /* Solid White Headline */
+    margin-bottom: 60px;
+}
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Vertical space between each step */
+}
+.process-step {
+    display: grid;
+    /* Defines 3 columns: Number | Title | Description */
+    grid-template-columns: max-content 200px 1fr;
+    align-items: center; /* Vertically aligns content in the row */
+    gap: 30px; /* Horizontal space between columns */
+}
+.step-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--primary-color); /* Solid Red */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+.step-title {
+    color: var(--text-dark-primary);
+    font-size: 1.5em;
     font-weight: 700;
     line-height: 1.3;
-    color: #E60000; /* Solid Red from Screenshot */
 }
-
-.case-study-comparison {
-    display: flex;
-    gap: 30px;
-    align-items: stretch; /* Key property for equal height children */
-}
-
-.case-column {
-    flex: 1 1 50%;
-    display: flex;
-    flex-direction: column;
-}
-
-/* THE CRITICAL FIX for aligning card tops */
-.case-column h3 {
-    min-height: 3.8em; /* Ensures both titles occupy the same vertical space */
-    margin-bottom: 1em;
-}
-
-.response-card {
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    background: var(--card-background);
-    flex-grow: 1; /* Makes card grow to fill column */
-}
-
-.verdict-analysis { margin-top: 20px; padding-top: 15px; }
-.verdict-analysis.error h4 { color: var(--error-text-color); }
-.verdict-analysis.success h4 { color: var(--success-text-color); }
-
-.verdict-analysis ul {
-    list-style: none;
-    padding: 0;
+.step-description p {
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.verdict-analysis ul li {
-    display: grid;
-    grid-template-columns: max-content max-content 1fr;
-    gap: 12px;
-    align-items: start;
-    font-size: 0.95em;
-    line-height: 1.6;
-}
-
-.verdict-analysis .analysis-label {
-    font-weight: 700;
-    color: var(--text-light);
-}
-
-.verdict-analysis .analysis-description {
     color: var(--text-dark-secondary);
+    font-size: 1.1em;
 }
 /* END OF FIX */
 
+
+/* --- Case Study Section (styles are correct) --- */
+.case-study-section { padding: 50px 0; }
+.section-headline-red { text-align: center; margin-bottom: 40px; font-size: 2.2em; font-weight: 700; line-height: 1.3; color: #E60000; }
+.case-study-comparison { display: flex; gap: 30px; align-items: stretch; }
+.case-column { flex: 1 1 50%; display: flex; flex-direction: column; }
+.case-column h3 { min-height: 3.8em; margin-bottom: 1em; }
+.response-card { padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--card-background); flex-grow: 1; }
+.verdict-analysis { margin-top: 20px; padding-top: 15px; }
+.verdict-analysis.error h4 { color: var(--error-text-color); }
+.verdict-analysis.success h4 { color: var(--success-text-color); }
+.verdict-analysis ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+.verdict-analysis ul li { display: grid; grid-template-columns: max-content max-content 1fr; gap: 12px; align-items: start; font-size: 0.95em; line-height: 1.6; }
+.verdict-analysis .analysis-label { font-weight: 700; color: var(--text-light); }
+.verdict-analysis .analysis-description { color: var(--text-dark-secondary); }
+
+/* --- (All subsequent sections are correct and unchanged) --- */
 .key-results { display: flex; gap: 20px; text-align: center; }
 .result-item { flex: 1; }
 .cta-footer { text-align: center; padding: 50px; }
 .final-cta { background-image: var(--primary-gradient); color: white; }
 .footer-branding { margin-top: 40px; font-size: 0.9em; }
-
-/* --- STYLES FOR INTERACTIVE CHAT DEMO --- */
 .interactive-demo-container { margin-bottom: 40px; }
 .demo-wrapper { max-width: 400px; margin: 0 auto; border: 6px solid #4B5563; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); overflow: hidden; background: #fff; }
 .onboarding-container { width: 100%; height: 650px; background-color: #fff; display: flex; flex-direction: column; overflow: hidden; color: #1F2937; }
@@ -182,9 +164,22 @@ h3 { font-size: 1.3em; font-weight: 600; }
     h1 { font-size: 2.2em; }
     .nav-links { display: none; }
     .strategic-benefits, .key-results, .case-study-comparison { flex-direction: column; gap: 20px; }
+    .case-column h3 { min-height: 0; }
 
-    /* Remove the min-height on mobile so content can flow naturally */
-    .case-column h3 {
-        min-height: 0;
+    /* Responsive styles for Process Section */
+    .process-step {
+        grid-template-columns: max-content 1fr; /* Stack title and description */
+        grid-template-rows: auto auto; /* Two rows */
+        column-gap: 20px;
+        row-gap: 10px;
+    }
+    .step-number {
+        grid-row: 1 / 3; /* Make number span both rows */
+    }
+    .step-title {
+        grid-column: 2 / 3;
+    }
+    .step-description {
+        grid-column: 2 / 3;
     }
 }
