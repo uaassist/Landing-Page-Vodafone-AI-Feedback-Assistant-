@@ -15,12 +15,64 @@
 }
 
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background-color: var(--background-dark); margin: 0; padding: 0; color: var(--text-dark-secondary); line-height: 1.6; padding-top: 80px; }
+body { font-family: 'Inter', sans-serif; background-color: var(--background-dark); margin: 0; padding: 0; color: var(--text-dark-secondary); line-height: 1.6; padding-top: 80px; } /* Add padding-top for fixed nav */
 
-.gradient-text { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+/* --- Navigation Bar (DEFINITIVE ROBUST FIX) --- */
+.main-nav {
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 0 40px;
+    border-bottom: 1px solid var(--border-color);
+    position: fixed; /* Makes nav stay at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 80px;
+}
+.nav-logo img {
+    height: 30px;
+    display: block; /* Fixes potential spacing issues */
+}
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.nav-links a:hover {
+    color: var(--text-dark-primary);
+}
+.nav-cta {
+    background-image: var(--primary-gradient);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.2s ease;
+}
+.nav-cta:hover {
+    transform: scale(1.05);
+}
+/* END OF FIX */
 
-/* ... (Nav, Hero, etc. styles are correct and unchanged) ... */
-.main-nav { background: rgba(17, 24, 39, 0.8); backdrop-filter: blur(10px); padding: 0 40px; border-bottom: 1px solid var(--border-color); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
+
 .landing-container { max-width: 840px; margin: 0 auto; padding: 40px 20px; }
 h1, h2, h3 { color: var(--text-dark-primary); }
 h1 { font-size: 3em; font-weight: 800; line-height: 1.2; }
@@ -33,8 +85,6 @@ h3 { font-size: 1.3em; font-weight: 600; }
 .primary-cta { background-image: var(--primary-gradient); color: white; }
 .strategic-benefits { display: flex; gap: 30px; margin-top: 40px; }
 .benefit-item { flex: 1; text-align: center; padding: 25px; background-color: rgba(17, 24, 39, 0.5); border-radius: 12px; border: 1px solid var(--border-color); }
-
-/* --- Process Section (styles are correct) --- */
 .process-section { padding: 50px 0; }
 .process-section .section-headline { color: var(--text-dark-primary); margin-bottom: 60px; text-align: center; }
 .process-steps { display: flex; flex-direction: column; gap: 40px; }
@@ -42,8 +92,6 @@ h3 { font-size: 1.3em; font-weight: 600; }
 .step-number { width: 48px; height: 48px; border-radius: 50%; background-color: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5em; font-weight: 700; }
 .step-title { color: var(--text-dark-primary); font-size: 1.5em; font-weight: 700; line-height: 1.3; }
 .step-description p { margin: 0; color: var(--text-dark-secondary); font-size: 1.1em; }
-
-/* --- Case Study Section (styles are correct) --- */
 .case-study-section { padding: 50px 0; }
 .section-headline-red { text-align: center; margin-bottom: 40px; font-size: 2.2em; font-weight: 700; line-height: 1.3; color: #E60000; }
 .case-study-comparison { display: flex; gap: 30px; align-items: stretch; }
@@ -57,46 +105,12 @@ h3 { font-size: 1.3em; font-weight: 600; }
 .verdict-analysis ul li { display: grid; grid-template-columns: max-content max-content 1fr; gap: 12px; align-items: start; font-size: 0.95em; line-height: 1.6; }
 .verdict-analysis .analysis-label { font-weight: 700; color: var(--text-light); }
 .verdict-analysis .analysis-description { color: var(--text-dark-secondary); }
-
-
-/* --- Metrics Section (DEFINITIVE ROBUST FIX) --- */
-.metrics-section {
-    padding: 50px 0;
-}
-.metrics-headline {
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--text-dark-primary);
-    letter-spacing: 0.1em; /* Adds space between letters */
-    margin-bottom: 60px;
-    font-size: 2.2em;
-}
-.key-results {
-    display: flex;
-    gap: 30px;
-    text-align: center;
-}
-.result-item {
-    flex: 1;
-}
-.result-item h3 {
-    font-size: 1.5em;
-    font-weight: 700;
-    line-height: 1.4;
-    color: var(--text-dark-primary);
-    margin-bottom: 20px;
-}
-.result-item p {
-    font-size: 1em;
-    line-height: 1.6;
-    color: var(--text-dark-secondary);
-    margin: 0 auto;
-    max-width: 30ch; /* Limits line length for readability */
-}
-/* END OF FIX */
-
-
-/* --- (Chat Demo and Footer styles are correct and unchanged) --- */
+.metrics-section { padding: 50px 0; }
+.metrics-headline { text-align: center; text-transform: uppercase; color: var(--text-dark-primary); letter-spacing: 0.1em; margin-bottom: 60px; font-size: 2.2em; }
+.key-results { display: flex; gap: 30px; text-align: center; }
+.result-item { flex: 1; }
+.result-item h3 { font-size: 1.5em; font-weight: 700; line-height: 1.4; color: var(--text-dark-primary); margin-bottom: 20px; }
+.result-item p { font-size: 1em; line-height: 1.6; color: var(--text-dark-secondary); margin: 0 auto; max-width: 30ch; }
 .cta-footer { text-align: center; padding: 50px; }
 .final-cta { background-image: var(--primary-gradient); color: white; }
 .footer-branding { margin-top: 40px; font-size: 0.9em; }
@@ -154,8 +168,10 @@ h3 { font-size: 1.3em; font-weight: 600; }
 /* --- Responsive Styles --- */
 @media (max-width: 768px) {
     body { padding-top: 60px; }
+    .nav-content { height: 60px; padding: 0 15px; }
+    .nav-links { display: none; } /* Hide links on mobile */
+    .nav-cta { padding: 8px 12px; font-size: 0.9em; }
     h1 { font-size: 2.2em; }
-    .nav-links { display: none; }
     .strategic-benefits, .key-results, .case-study-comparison { flex-direction: column; gap: 20px; }
     .case-column h3 { min-height: 0; }
     .process-step { grid-template-columns: max-content 1fr; grid-template-rows: auto auto; column-gap: 20px; row-gap: 10px; }
