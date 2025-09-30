@@ -49,18 +49,18 @@ h3 { font-size: 1.3em; font-weight: 600; }
 .process-step { display: flex; align-items: center; }
 .step-number { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background-image: var(--primary-gradient); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 20px; }
 
-/* --- Case Study Section (NEW ROBUST IMPLEMENTATION) --- */
+/* --- Case Study Section (DEFINITIVE ROBUST FIX) --- */
 .case-study-section { padding: 50px 0; }
 
 .case-study-comparison {
-    display: grid; /* Use Grid for robust layout */
-    grid-template-columns: repeat(2, 1fr); /* Create two equal columns */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    align-items: stretch; /* Ensure grid items stretch to fill height */
+    align-items: stretch;
 }
 
 .case-column {
-    display: flex; /* Use Flexbox for internal alignment */
+    display: flex;
     flex-direction: column;
 }
 
@@ -69,27 +69,42 @@ h3 { font-size: 1.3em; font-weight: 600; }
     border-radius: 12px;
     border: 1px solid var(--border-color);
     background: var(--card-background);
-    flex-grow: 1; /* Allow card to grow within the flex column */
+    flex-grow: 1;
 }
 .verdict-analysis { margin-top: 20px; padding-top: 15px; }
 .verdict-analysis.error h4 { color: var(--error-text-color); }
 .verdict-analysis.success h4 { color: var(--success-text-color); }
+
 .verdict-analysis ul {
-    margin: 0;
-    padding-left: 0;
     list-style: none;
-}
-.verdict-analysis ul li {
+    padding: 0;
+    margin: 0;
     display: flex;
-    align-items: flex-start;
-    gap: 0.7em;
+    flex-direction: column;
+    gap: 16px; /* Space between each list item */
+}
+
+.verdict-analysis ul li {
+    display: grid;
+    /* Defines 3 columns: Icon | Label | Description */
+    grid-template-columns: max-content max-content 1fr; 
+    gap: 12px; /* Space between the columns */
+    align-items: start;
     font-size: 0.95em;
-    line-height: 1.6;
-    margin-bottom: 0.5em;
 }
-.verdict-analysis ul li strong {
+
+.verdict-analysis .analysis-label {
+    font-weight: 700;
     color: var(--text-light);
+    line-height: 1.5;
 }
+
+.verdict-analysis .analysis-description {
+    color: var(--text-dark-secondary);
+    line-height: 1.5;
+}
+/* END OF FIX */
+
 
 .key-results { display: flex; gap: 20px; text-align: center; }
 .result-item { flex: 1; }
@@ -156,7 +171,6 @@ h3 { font-size: 1.3em; font-weight: 600; }
     .nav-links { display: none; }
     .strategic-benefits, .key-results { flex-direction: column; gap: 20px; }
     
-    /* Responsive grid for case study */
     .case-study-comparison {
         grid-template-columns: 1fr; /* Stack columns on mobile */
     }
