@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const quickRepliesContainer = document.getElementById('quick-replies-container');
         const progressContainer = document.getElementById('progress-container');
 
-        const placeId = 'Your_Google_Place_ID_Here'; // IMPORTANT: Replace
+        const placeId = 'Your_Google_Place_ID_Here'; // IMPORTANT: Replace with actual Place ID
         const googleReviewUrl = `https://search.google.com/local/writereview?placeid=${placeId}`;
         const avatarUrl = 'https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp';
         let conversationHistory = [];
@@ -88,21 +88,23 @@ document.addEventListener('DOMContentLoaded', () => {
             conversationHistory.push({ role: 'user', content: userMessage });
             clearQuickReplies();
             showTypingIndicator();
-
-            // This is a MOCK response for demo purposes.
-            // Replace this with the real fetch call in production.
-            setTimeout(() => {
+            try {
+                const response = await fetch('/api/concierge', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: conversationHistory }),
+                });
+                if (!response.ok) throw new Error('Network response was not ok.');
+                const data = await response.json();
+                const aiMessage = data.message;
+                conversationHistory.push(aiMessage);
                 removeTypingIndicator();
-                let aiResponseText;
-                if (conversationHistory.length <= 2) {
-                    aiResponseText = "Супер! Щоб допомогти вам, мені потрібно всього кілька деталей.|Яка була головна мета вашого візиту?";
-                } else if (conversationHistory.length <= 4) {
-                    aiResponseText = "Добре, дякую!|А якими були ваші враження від обслуговування?";
-                } else {
-                    aiResponseText = `Чудово, дякую за уточнення! Ось чернетка відгуку, яку я підготував на основі ваших слів: "Відмінний сервіс! Дуже допомогли з налаштуваннями телефону. Персонал компетентний, все зробили швидко. Рекомендую цей магазин Vodafone!"`;
-                }
-                processAIResponse(aiResponseText);
-            }, 1200);
+                processAIResponse(aiMessage.content);
+            } catch (error) {
+                console.error("Fetch Error:", error);
+                removeTypingIndicator();
+                addMessage('concierge', "Вибачте, виникла проблема зі з'єднанням. Спробуйте, будь ласка, пізніше.");
+            }
         }
         
         function showTypingIndicator() {
