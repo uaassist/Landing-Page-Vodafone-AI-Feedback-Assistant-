@@ -57,23 +57,35 @@ nav a:hover { color: var(--text-primary); }
 .problem-card p { color: var(--text-secondary); line-height: 1.7; }
 .problem-stat { background: rgba(239, 68, 68, 0.1); color: var(--danger-red); padding: 10px 15px; border-radius: 8px; font-weight: 600; margin-top: 15px; display: inline-block; font-size: 14px; }
 
-/* --- Solution Section --- */
-.solution-showcase { display: grid; grid-template-columns: 450px 1fr; gap: 60px; align-items: center; margin-top: 60px; }
+/* --- Solution Section (UPDATED LAYOUT) --- */
+.solution-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    margin-top: 60px;
+}
 .solution-visual {
+    width: 100%;
     max-width: 450px;
-    margin: 0 auto;
     border: 6px solid #334155;
     border-radius: 30px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     background: #fff;
 }
-.solution-features { display: flex; flex-direction: column; gap: 30px; }
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+}
 .feature-item { display: flex; gap: 20px; align-items: flex-start; }
 .feature-icon { width: 48px; height: 48px; background: var(--vodafone-red); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
 .feature-content h3 { font-size: 18px; margin-bottom: 10px; }
 .feature-content p { color: var(--text-secondary); line-height: 1.6; }
 .feature-metric { background: rgba(34, 197, 94, 0.1); color: var(--success-green); padding: 5px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; display: inline-block; margin-top: 8px; }
+/* END OF UPDATE */
 
 /* --- ROI Section --- */
 .roi-section { background: linear-gradient(135deg, #E60000 0%, #a10000 100%); }
@@ -165,8 +177,6 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--border-color); font-s
     .hero-content { text-align: center; }
     .hero-stats { justify-content: center; }
     .cta-group { justify-content: center; }
-    .solution-showcase { grid-template-columns: 1fr; gap: 50px; }
-    .solution-visual { max-width: 450px; /* Constrain demo width on tablets */ }
     .footer-content { grid-template-columns: 1fr 1fr; }
     .footer-brand { grid-column: 1 / -1; }
 }
@@ -178,7 +188,7 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--border-color); font-s
     nav { display: none; }
     .hero-content h1, .section-title, .cta-content h2 { font-size: 32px; }
     .hero-stats { flex-direction: column; gap: 30px; align-items: center; }
-    .problem-grid, .roi-grid { grid-template-columns: 1fr; }
+    .problem-grid, .roi-grid, .features-grid { grid-template-columns: 1fr; }
     .timeline-item { grid-template-columns: 50px 1fr; gap: 20px; }
     .timeline::before { left: 24px; }
     .trust-badges { gap: 20px; }
