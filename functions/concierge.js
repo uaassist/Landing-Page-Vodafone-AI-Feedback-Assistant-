@@ -1,3 +1,14 @@
+exports.handler = async function (event) {
+    // --- ADD THIS DEBUGGING LINE ---
+    console.log("Function environment variables:", process.env);
+    // --- END OF DEBUGGING LINE ---
+
+    if (event.httpMethod !== 'POST') {
+        // ... (rest of the code is the same)
+    }
+    // ...
+};
+
 const fetch = require('node-fetch');
 
 const reviewExamples = `
@@ -67,3 +78,4 @@ exports.handler = async function (event) {
     return { statusCode: 500, body: JSON.stringify({ error: "AI service is currently unavailable." }), };
   }
 };
+
