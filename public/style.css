@@ -17,28 +17,56 @@
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background-color: var(--background-dark); margin: 0; padding: 0; color: var(--text-dark-secondary); line-height: 1.6; padding-top: 80px; }
 
-/* ... (Nav, General Styles are correct and unchanged) ... */
+/* --- Navigation Bar (styles are correct) --- */
 .main-nav { background: rgba(17, 24, 39, 0.8); backdrop-filter: blur(10px); padding: 0 40px; border-bottom: 1px solid var(--border-color); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
 .nav-content { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; height: 80px; }
 .nav-logo img { height: 30px; display: block; }
 .nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; }
 .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
 .nav-links a:hover { color: var(--text-dark-primary); }
-.nav-cta { background-image: var(--primary-gradient); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; transition: transform 0.2s ease; }
-.nav-cta:hover { transform: scale(1.05); }
+
+/* DEFINITIVE BUTTON FIX: Unified styles for nav-cta */
+.nav-cta {
+    background-image: var(--primary-gradient);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(230, 0, 0, 0.2);
+}
+.nav-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(230, 0, 0, 0.4);
+}
+/* END OF FIX */
+
 .landing-container { max-width: 840px; margin: 0 auto; padding: 40px 20px; }
 h1, h2, h3 { color: var(--text-dark-primary); }
 h1 { font-size: 3em; font-weight: 800; line-height: 1.2; }
 h2 { font-size: 2.2em; font-weight: 700; }
 h3 { font-size: 1.3em; font-weight: 600; }
 .card { background-color: var(--card-background); backdrop-filter: blur(5px); padding: 40px; border-radius: 16px; margin-bottom: 40px; border: 1px solid var(--border-color); }
-.subtitle { max-width: 600px; margin-left: auto; margin-right: auto; }
-.section-headline { text-align: center; margin-bottom: 10px; }
+
+.cta-button { 
+    display: inline-block; 
+    padding: 15px 30px; 
+    font-size: 1.1em; 
+    font-weight: 700; 
+    border-radius: 8px; 
+    border: none; 
+    cursor: pointer; 
+    text-decoration: none;
+    transition: all 0.2s ease; /* Added transition to base class */
+}
 
 /* --- AI-First Hero Section --- */
 .hero-section-ai-first { text-align: center; padding: 60px 0; margin-bottom: 60px; }
 .hero-text-content { margin-bottom: 40px; }
 .hero-section-ai-first .client-logo { max-height: 50px; margin-bottom: 30px; }
+.subtitle { max-width: 600px; margin-left: auto; margin-right: auto; }
+.section-headline { text-align: center; margin-bottom: 10px; }
 
 /* --- Case Study Section --- */
 .case-study-section { padding: 50px 0; }
@@ -55,31 +83,12 @@ h3 { font-size: 1.3em; font-weight: 600; }
 .verdict-analysis .analysis-label { font-weight: 700; color: var(--text-light); }
 .verdict-analysis .analysis-description { color: var(--text-dark-secondary); }
 
-/* --- NEW "Game-Changer" Section Styles --- */
-.game-changer-section .subtitle {
-    margin-bottom: 40px;
-}
-.game-changer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-.game-changer-grid .benefit-item {
-    text-align: center;
-    padding: 25px;
-    background-color: rgba(17, 24, 39, 0.5);
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-}
-.game-changer-grid .benefit-item h3 {
-    margin-bottom: 15px;
-    font-size: 1.1em;
-}
-.game-changer-grid .benefit-item p {
-    font-size: 0.95em;
-    margin: 0;
-}
-/* END OF NEW STYLES */
+/* --- "Game-Changer" Section Styles --- */
+.game-changer-section .subtitle { margin-bottom: 40px; }
+.game-changer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.game-changer-grid .benefit-item { text-align: center; padding: 25px; background-color: rgba(17, 24, 39, 0.5); border-radius: 12px; border: 1px solid var(--border-color); }
+.game-changer-grid .benefit-item h3 { margin-bottom: 15px; font-size: 1.1em; }
+.game-changer-grid .benefit-item p { font-size: 0.95em; margin: 0; }
 
 .strategic-benefits { display: flex; gap: 30px; margin-top: 40px; }
 .feature-section .benefit-item { flex: 1; text-align: center; padding: 25px; background-color: rgba(17, 24, 39, 0.5); border-radius: 12px; border: 1px solid var(--border-color); }
@@ -92,10 +101,21 @@ h3 { font-size: 1.3em; font-weight: 600; }
 .result-item h3 { font-size: 1.5em; font-weight: 700; line-height: 1.4; color: var(--text-dark-primary); margin-bottom: 20px; }
 .result-item p { font-size: 1em; line-height: 1.6; color: var(--text-dark-secondary); margin: 0 auto; max-width: 30ch; }
 
-/* ... (Chat Demo, Footer, and Responsive styles are correct and unchanged) ... */
+/* --- Footer (DEFINITIVE BUTTON FIX) --- */
 .cta-footer { text-align: center; padding: 50px; }
-.final-cta { background-image: var(--primary-gradient); color: white; }
+.final-cta {
+    background-image: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(230, 0, 0, 0.2);
+}
+.final-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(230, 0, 0, 0.4);
+}
 .footer-branding { margin-top: 40px; font-size: 0.9em; }
+/* END OF FIX */
+
+/* --- STYLES FOR INTERACTIVE CHAT DEMO --- */
 .demo-wrapper { max-width: 400px; margin: 0 auto; border: 6px solid #4B5563; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); overflow: hidden; background: #fff; }
 .onboarding-container { width: 100%; height: 650px; background-color: #fff; display: flex; flex-direction: column; overflow: hidden; color: #1F2937; }
 .simple-header { text-align: center; padding: 16px; border-bottom: 1px solid #E5E7EB; flex-shrink: 0; }
@@ -155,7 +175,7 @@ h3 { font-size: 1.3em; font-weight: 600; }
     h1 { font-size: 2.2em; }
     .strategic-benefits, .key-results, .case-study-comparison, .game-changer-grid { 
         flex-direction: column; 
-        grid-template-columns: 1fr; /* Stacks grid items */
+        grid-template-columns: 1fr;
         gap: 20px; 
     }
     .case-column h3 { min-height: 0; }
