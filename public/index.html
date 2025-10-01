@@ -111,96 +111,63 @@
             </div>
         </section>
 
+         <!-- Section "Solution" - DEFINITIVE UPDATE -->
         <section class="solution-section" id="solution">
             <div class="container">
-                <div class="section-header">
-                    <div class="section-tag">💡 Наше Рішення</div>
-                    <h2 class="section-title">TOBi: Спробуйте AI, який пише відгуки замість клієнтів</h2>
-                    <p class="section-description">Ми змінюємо завдання з "написати відгук" на "схвалити відгук". Це радикально збільшує конверсію та якість.</p>
-                </div>
-
                 <div class="solution-showcase">
                     <div class="solution-visual">
-                        <div class="onboarding-container">
-                            <div class="simple-header">
-                                <h1>Vodafone Україна</h1>
-                            </div>
-                            <div class="progress-container hidden" id="progress-container">
-                                <div id="progress-labels">
-                                    <span class="progress-label">Мета візиту</span>
-                                    <span class="progress-label">Враження</span>
-                                    <span class="progress-label">Ваш відгук</span>
+                        <div class="phone-mockup">
+                            <div class="phone-header">Vodafone Україна</div>
+                            <div class="phone-body">
+                                <div class="chat-avatar-container">
+                                    <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="TOBi Avatar" class="chat-avatar-static">
+                                    <p>Привіт! Я TOBi, ваш ШІ-помічник.</p>
                                 </div>
-                                <div id="progress-indicator">
-                                    <div class="progress-segment"></div>
-                                    <div class="progress-segment"></div>
-                                    <div class="progress-segment"></div>
+                                <div class="chat-bubble-static concierge">
+                                    Будь ласка, поділіться враженнями про ваш нещодавній візит до магазину.
                                 </div>
-                            </div>
-                            <div id="content-area">
-                                <div id="welcome-screen">
-                                    <div class="welcome-header">
-                                        <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
-                                        <p class="concierge-name-tag">Привіт! Я TOBi, ваш ШІ-помічник.</p>
-                                    </div>
-                                    <div class="initial-bubble">
-                                        Будь ласка, поділіться враженнями про ваш нещодавній візит до магазину.
-                                    </div>
-                                    <div id="initial-choices" class="initial-choices">
-                                        <button id="great-btn" class="choice-button single-line">🙂 Все було чудово!</button>
-                                        <button id="okay-btn" class="choice-button single-line">😐 Все було добре.</button>
-                                        <button id="bad-btn" class="choice-button single-line">🙁 Були деякі проблеми.</button>
-                                    </div>
-                                </div>
-                                <div id="choice-screen" class="hidden">
-                                    <div class="welcome-header">
-                                        <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
-                                        <p class="concierge-name-tag">TOBi</p>
-                                    </div>
-                                    <div class="initial-bubble">
-                                        Чудово! Будь ласка, знайдіть хвилинку, щоб залишити відгук у Google. Я можу допомогти його написати.
-                                    </div>
-                                    <p class="ukrainian-prompt">Як вам зручніше залишити відгук?</p>
-                                    <div class="initial-choices">
-                                        <button id="ai-draft-btn" class="choice-button">
-                                            <div class="button-main-text">🤖 TOBi напише чернетку для мене</div>
-                                            <div class="button-sub-text">TOBi пише, ви публікуєте</div>
-                                        </button>
-                                        <button id="manual-review-btn" class="choice-button">
-                                            <div class="button-main-text">📝 Я напишу відгук самостійно</div>
-                                            <div class="button-sub-text">Відкрити сторінку відгуків Google</div>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div id="chat-view" class="hidden">
-                                    <div id="chat-body" class="chat-body-styled"></div>
-                                    <div id="chat-input-area" class="chat-input-area-styled">
-                                        <div id="quick-replies-container"></div>
-                                    </div>
-                                </div>
-                                <div id="recovery-screen" class="hidden">
-                                    <div class="welcome-header">
-                                        <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
-                                        <p class="concierge-name-tag">TOBi</p>
-                                    </div>
-                                    <div class="initial-bubble">
-                                        Нам дуже шкода це чути. Схоже, ми не виправдали ваших очікувань.
-                                    </div>
-                                    <p class="ukrainian-prompt">Будь ласка, оберіть, як ми можемо негайно все виправити:</p>
-                                    <div class="initial-choices">
-                                        <button id="request-assistance-btn" class="choice-button">
-                                            <div class="button-main-text">💬 Зв'язатися з підтримкою</div>
-                                            <div class="button-sub-text">Прямий зв'язок для швидкого вирішення</div>
-                                        </button>
-                                        <button id="schedule-callback-btn" class="choice-button">
-                                            <div class="button-main-text">🗓️ Замовити дзвінок менеджера</div>
-                                            <div class="button-sub-text">Оберіть зручний час для розмови</div>
-                                        </button>
-                                    </div>
+                                <div class="chat-bubble-static user">
+                                    🙂 Все було чудово!
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="solution-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M11 19.5a.5.5 0 0 1-.5-.5v-6.414l-1.646 1.646a.5.5 0 0 1-.708-.708l2.5-2.5a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1-.708.708L12.5 12.586v6.414a.5.5 0 0 1-.5.5zM12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Миттєва генерація</h3>
+                                <p>TOBi створює персоналізований відгук за 0.3 секунди на основі обраної емоції та історії взаємодії клієнта.</p>
+                                <div class="feature-metric">↑ 1340% вища конверсія</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <span>UA</span>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Природна українська мова</h3>
+                                <p>Спеціально навчений на українських відгуках. Створює автентичні тексти, які звучать природно для вашої аудиторії.</p>
+                                <div class="feature-metric dark">Модель GPT-4 Turbo</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19.4 7.34l-3.74-3.74a4.12 4.12 0 0 0-5.82 0L3.1 10.34a4.12 4.12 0 0 0 0 5.82l3.74 3.74a4.12 4.12 0 0 0 5.82 0l6.74-6.74a4.12 4.12 0 0 0 0-5.82zM11.28 18.5a2.12 2.12 0 0 1-3 0L4.54 14.76a2.12 2.12 0 0 1 0-3L8 8.08l3.25 3.25zm7.42-7.42L15.45 14.3a.5.5 0 0 1-.71 0l-3.25-3.25.65-.65a2.12 2.12 0 0 1 3 0l2.12 2.12a2.12 2.12 0 0 1 0 3z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Повний контроль клієнта</h3>
+                                <p>Клієнт може відредагувати будь-яку частину або переписати повністю. Це залишається його справжнім відгуком — AI лише допомагає.</p>
+                                <div class="feature-metric">100% відповідність вимогам Google</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
                     <div class="solution-features">
                         <div class="feature-item">
@@ -356,3 +323,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
