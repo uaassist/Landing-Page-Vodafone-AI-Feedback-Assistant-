@@ -1,24 +1,8 @@
 {
-  "name": "vodafone-feedback-demo",
+  "name": "vodafone-ai-demo",
   "version": "1.0.0",
-  "description": "Integrated AI Feedback Assistant Demo",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "Interactive AI review assistant demo",
   "dependencies": {
     "node-fetch": "^2.6.1"
   }
 }
-
-
-
-
-
-
-
-
-
