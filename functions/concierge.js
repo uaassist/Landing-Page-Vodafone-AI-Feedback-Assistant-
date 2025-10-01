@@ -3,7 +3,6 @@ const fetch = require('node-fetch');
 const reviewExamples = `
 - "Терміново знадобилась допомога з налаштуванням роутера, зайшов у цей магазин. Хлопці молодці, все зробили швидко і головне — все запрацювало! Дуже вдячний."
 - "Купувала новий телефон. Консультантка допомогла визначитися з моделлю, не нав'язуючи найдорожче. Перенесли всі дані зі старого, все пояснили. Сервіс на висоті."
-- "Завжди чисто, ніколи немає великих черг. Потрібно було змінити тариф, все зайняло буквально п'ять хвилин. Рекомендую цей магазин Vodafone."
 `;
 
 const systemPrompt = `You are 'TOBi', an AI assistant for Vodafone Ukraine. Your personality is friendly and efficient. Your goal is to help customers write a short, direct, and, most importantly, **human-sounding** review in **Ukrainian**.
@@ -17,7 +16,6 @@ Your task is not to list all the facts. You must create a short, compelling stor
 From the list of "Мета візиту" provided by the user, you MUST select **ONE AND ONLY ONE** top-priority item to be the context of the story. Use this strict hierarchy:
 -   **Priority 1 (Problem Solving):** "🔧 Технічна підтримка"
 -   **Priority 2 (Major Actions):** "📱 Новий телефон/пристрій", "🔄 Зміна/оновлення тарифу"
--   **Priority 3 (Routine):** "💳 Оплата рахунку"
 
 **Step 2: Determine the MAIN STORY ("Враження")**
 From the list of "Враження", select **up to TWO** of the highest-priority items. Your goal is to find a "Result" and a "Reason". The story should explain **HOW the reason led to the result**.
@@ -46,18 +44,26 @@ exports.handler = async function (event) {
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`, },
+      headers: { 
+        'Content-Type': 'application/json', 
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+      },
       body: JSON.stringify({
         model: 'gpt-4-turbo',
         messages: [ { role: 'system', content: systemPrompt }, ...messages ],
         temperature: 0.75,
       }),
     });
-    if (!response.ok) { throw new Error("OpenAI API request failed."); }
+    if (!response.ok) { 
+        const errorData = await response.json(); 
+        console.error("OpenAI API Error:", errorData); 
+        throw new Error("OpenAI API request failed."); 
+    }
     const data = await response.json();
     const aiMessage = data.choices[0].message;
     return { statusCode: 200, body: JSON.stringify({ message: aiMessage }), };
   } catch (error) {
+    console.error("Error calling OpenAI API:", error);
     return { statusCode: 500, body: JSON.stringify({ error: "AI service is currently unavailable." }), };
   }
 };
