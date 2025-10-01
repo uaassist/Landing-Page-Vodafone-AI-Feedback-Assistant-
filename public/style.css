@@ -57,23 +57,27 @@ nav a:hover { color: var(--text-primary); }
 .problem-card p { color: var(--text-secondary); line-height: 1.7; }
 .problem-stat { background: rgba(239, 68, 68, 0.1); color: var(--danger-red); padding: 10px 15px; border-radius: 8px; font-weight: 600; margin-top: 15px; display: inline-block; font-size: 14px; }
 
-/* --- Solution Section --- */
-.solution-showcase { display: grid; grid-template-columns: 450px 1fr; gap: 60px; align-items: center; margin-top: 60px; }
-.solution-visual {
-    max-width: 450px;
-    margin: 0 auto;
-    border: 6px solid #334155;
-    border-radius: 30px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    background: #fff;
-}
-.solution-features { display: flex; flex-direction: column; gap: 30px; }
+/* --- Solution Section (DEFINITIVE UPDATE) --- */
+.solution-showcase { display: grid; grid-template-columns: 350px 1fr; gap: 80px; align-items: center; margin-top: 60px; }
+.solution-visual { background: #E5E7EB; border-radius: 30px; padding: 10px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+.phone-mockup { background: #fff; border-radius: 20px; overflow: hidden; height: 700px; }
+.phone-header { padding: 15px; text-align: center; font-weight: 600; color: #111827; border-bottom: 1px solid #D1D5DB; }
+.phone-body { padding: 20px; color: #1F2937; text-align: center; }
+.chat-avatar-container { margin-bottom: 20px; }
+.chat-avatar-static { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 10px; }
+.chat-avatar-container p { font-size: 14px; }
+.chat-bubble-static { padding: 12px 16px; border-radius: 20px; line-height: 1.5; font-size: 16px; margin-bottom: 15px; text-align: left; }
+.chat-bubble-static.concierge { background: #F3F4F6; color: #1F2937; border-bottom-left-radius: 6px; }
+.chat-bubble-static.user { background: transparent; color: var(--vodafone-red); border: 1px solid var(--vodafone-red); border-bottom-right-radius: 6px; }
+.solution-features { display: flex; flex-direction: column; gap: 35px; }
 .feature-item { display: flex; gap: 20px; align-items: flex-start; }
-.feature-icon { width: 48px; height: 48px; background: var(--vodafone-red); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.feature-icon { width: 48px; height: 48px; background: var(--vodafone-red); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; flex-shrink: 0; }
+.feature-icon svg { fill: #fff; }
 .feature-content h3 { font-size: 18px; margin-bottom: 10px; }
 .feature-content p { color: var(--text-secondary); line-height: 1.6; }
-.feature-metric { background: rgba(34, 197, 94, 0.1); color: var(--success-green); padding: 5px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; display: inline-block; margin-top: 8px; }
+.feature-metric { padding: 5px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; display: inline-block; margin-top: 8px; }
+.feature-metric.dark { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
+/* END OF UPDATE */
 
 /* --- ROI Section --- */
 .roi-section { background: linear-gradient(135deg, #E60000 0%, #a10000 100%); }
@@ -114,51 +118,6 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--border-color); font-s
 .problem-card.is-visible, .feature-item.is-visible, .roi-card.is-visible, .timeline-item.is-visible { opacity: 1; transform: translateY(0); }
 .feature-item:nth-child(2) { transition-delay: 0.1s; } .feature-item:nth-child(3) { transition-delay: 0.2s; }
 
-/* --- STYLES FOR INTERACTIVE CHAT DEMO --- */
-.onboarding-container { width: 100%; height: 650px; background-color: #fff; display: flex; flex-direction: column; overflow: hidden; color: #1F2937; font-family: 'Inter', sans-serif; }
-.simple-header { text-align: center; padding: 16px; border-bottom: 1px solid #E5E7EB; flex-shrink: 0; }
-.simple-header h1 { font-size: 18px; font-weight: 600; margin: 0; color: #1F2937; }
-.progress-container { padding: 8px 24px; flex-shrink: 0; }
-#progress-labels { display: flex; justify-content: space-between; margin-bottom: 4px; }
-.progress-label { font-size: 12px; font-weight: 500; color: #6B7280; }
-.progress-label.active { color: var(--vodafone-red); }
-#progress-indicator { display: flex; gap: 8px; }
-.progress-segment { flex: 1; height: 6px; border-radius: 3px; background-color: #E5E7EB; }
-.progress-segment.active { background-color: var(--vodafone-red); }
-#content-area { flex: 1; position: relative; overflow-y: auto; }
-#welcome-screen, #choice-screen, #chat-view, #recovery-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; box-sizing: border-box; }
-#welcome-screen, #choice-screen, #recovery-screen { padding: 24px; text-align: center; animation: fadeIn 0.5s ease-out; }
-@keyframes fadeIn { from { opacity: 0; } to: { opacity: 1; } }
-.welcome-avatar { width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-.concierge-name-tag { margin-top: 16px; font-size: 12px; font-weight: 600; }
-.initial-bubble { background: #F9FAFB; padding: 15px 20px; border-radius: 20px 20px 20px 6px; margin: 12px auto 0; line-height: 1.6; font-size: 18px; }
-.initial-choices { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
-.choice-button { width: 100%; padding: 16px; border-radius: 12px; border: 1px solid var(--vodafone-red); background-color: #fff; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; box-sizing: border-box; }
-.choice-button.single-line { flex-direction: row; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; }
-.button-main-text { font-size: 16px; font-weight: 600; color: #1F2937; }
-.button-sub-text { font-size: 14px; color: #6B7280; }
-.ukrainian-prompt { font-weight: 600; margin-top: 24px; margin-bottom: -12px; }
-.chat-body-styled { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column-reverse; background-color: #F9FAFB; }
-.message-wrapper { margin-bottom: 12px; display: flex; max-width: 90%; align-items: flex-end; }
-.concierge { justify-content: flex-start; }
-.user { justify-content: flex-end; margin-left: auto; }
-.chat-avatar { width: 32px; height: 32px; border-radius: 50%; margin-right: 10px; flex-shrink: 0; }
-.bubble { padding: 12px 16px; border-radius: 20px; line-height: 1.6; font-size: 16px; }
-.concierge .bubble { background: #fff; color: #1F2937; border: 1px solid #E5E7EB; border-bottom-left-radius: 6px; }
-.user .bubble { background: var(--vodafone-red); color: white; border-bottom-right-radius: 6px; }
-.concierge .bubble.question-bubble { font-weight: 500; background-color: #fee2e2; border: none; }
-.chat-input-area-styled { padding: 12px; border-top: 1px solid #E5E7EB; background: #fff; }
-#quick-replies-container { display: flex; flex-wrap: wrap; gap: 8px; }
-.quick-reply-btn { flex: 1 1 45%; padding: 14px 8px; border-radius: 10px; background: #fff; border: 1px solid #E5E7EB; cursor: pointer; font-size: 15px; font-weight: 500; text-align: center; }
-.quick-reply-btn.selected { background-color: var(--vodafone-red); border-color: var(--vodafone-red); color: white; }
-.continue-btn { flex-basis: 100%; background-color: var(--vodafone-red); color: white; font-weight: 600; border: none; }
-.typing-indicator .bubble { display: flex; align-items: center; }
-.dot { width: 8px; height: 8px; margin: 0 2px; background-color: #9CA3AF; border-radius: 50%; animation: bounce 1.3s infinite ease-in-out; }
-.dot:nth-child(2) { animation-delay: 0.1s; }
-.dot:nth-child(3) { animation-delay: 0.2s; }
-@keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
-.hidden { display: none !important; }
-
 /* --- Responsive --- */
 @media (max-width: 1024px) {
     .hero-grid { grid-template-columns: 1fr; gap: 60px; }
@@ -166,7 +125,7 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--border-color); font-s
     .hero-stats { justify-content: center; }
     .cta-group { justify-content: center; }
     .solution-showcase { grid-template-columns: 1fr; gap: 50px; }
-    .solution-visual { max-width: 450px; /* Constrain demo width on tablets */ }
+    .solution-visual { max-width: 400px; margin: 0 auto; }
     .footer-content { grid-template-columns: 1fr 1fr; }
     .footer-brand { grid-column: 1 / -1; }
 }
