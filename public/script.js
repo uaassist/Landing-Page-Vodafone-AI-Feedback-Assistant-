@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Element selectors for all views ---
-    const contentArea = document.getElementById('content-area');
     const welcomeScreen = document.getElementById('welcome-screen');
     const choiceScreen = document.getElementById('choice-screen');
     const chatView = document.getElementById('chat-view');
@@ -9,47 +8,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const quickRepliesContainer = document.getElementById('quick-replies-container');
     const progressContainer = document.getElementById('progress-container');
 
-    // --- Single Event Listener using Event Delegation ---
-    contentArea.addEventListener('click', (event) => {
-        const button = event.target.closest('button');
-        if (!button) return;
+    // --- Button Selectors for Initial Steps ---
+    const greatBtn = document.getElementById('great-btn');
+    const okayBtn = document.getElementById('okay-btn');
+    const badBtn = document.getElementById('bad-btn');
+    const aiDraftBtn = document.getElementById('ai-draft-btn');
+    const manualReviewBtn = document.getElementById('manual-review-btn');
+    const requestAssistanceBtn = document.getElementById('request-assistance-btn');
+    const scheduleCallbackBtn = document.getElementById('schedule-callback-btn');
+    const googleReviewFallbackBtn = document.getElementById('google-review-fallback-btn');
 
-        const buttonId = button.id;
-        
-        switch (buttonId) {
-            case 'great-btn':
-                welcomeScreen.classList.add('hidden');
-                choiceScreen.classList.remove('hidden');
-                break;
-            
-            case 'okay-btn':
-            case 'bad-btn':
-                welcomeScreen.classList.add('hidden');
-                recoveryScreen.classList.remove('hidden');
-                break;
-            
-            case 'ai-draft-btn':
-                choiceScreen.classList.add('hidden');
-                startConversation("Все було чудово!");
-                break;
-
-            case 'manual-review-btn':
-                window.open(googleReviewUrl, '_blank');
-                choiceScreen.innerHTML = `<h1 class="main-title">Дякуємо!</h1><p class="subtitle">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
-                break;
-            
-            case 'request-assistance-btn':
-                alert('Перенаправлення до чату підтримки...');
-                break;
-            case 'schedule-callback-btn':
-                alert('Перенаправлення на сторінку планування дзвінка...');
-                break;
-            case 'google-review-fallback-btn':
-                window.open(googleReviewUrl, '_blank');
-                recoveryScreen.innerHTML = `<h1 class="main-title">Дякуємо!</h1><p class="subtitle">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
-                break;
-        }
+    // --- DEFINITIVE FIX: Direct Event Listeners for Welcome/Choice Screens ---
+    greatBtn.addEventListener('click', () => {
+        welcomeScreen.classList.add('hidden');
+        choiceScreen.classList.remove('hidden');
     });
+
+    okayBtn.addEventListener('click', () => {
+        welcomeScreen.classList.add('hidden');
+        recoveryScreen.classList.remove('hidden');
+    });
+
+    badBtn.addEventListener('click', () => {
+        welcomeScreen.classList.add('hidden');
+        recoveryScreen.classList.remove('hidden');
+    });
+
+    aiDraftBtn.addEventListener('click', () => {
+        choiceScreen.classList.add('hidden');
+        startConversation("Все було чудово!");
+    });
+
+    manualReviewBtn.addEventListener('click', () => {
+        window.open(googleReviewUrl, '_blank');
+        choiceScreen.innerHTML = `<h1 class="main-title">Дякуємо!</h1><p class="subtitle">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
+    });
+
+    requestAssistanceBtn.addEventListener('click', () => {
+        alert('Перенаправлення до чату підтримки...');
+    });
+
+    scheduleCallbackBtn.addEventListener('click', () => {
+        alert('Перенаправлення на сторінку планування дзвінка...');
+    });
+    
+    googleReviewFallbackBtn.addEventListener('click', () => {
+        window.open(googleReviewUrl, '_blank');
+        recoveryScreen.innerHTML = `<h1 class="main-title">Дякуємо!</h1><p class="subtitle">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
+    });
+    // --- END OF FIX ---
+
 
     function updateProgressBar(step) {
         const segments = progressContainer.querySelectorAll('.progress-segment');
@@ -199,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createPostButtons() {
         clearQuickReplies();
-        // DEFINITIVE FIX: Add a class to the container for specific styling
         quickRepliesContainer.classList.add('final-actions');
 
         const postButton = document.createElement('button');
@@ -217,4 +224,17 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         const regenerateButton = document.createElement('button');
         regenerateButton.className = 'quick-reply-btn';
-        regenerateButton.innerText = '🔄
+        regenerateButton.innerText = '🔄 Інша версія';
+        regenerateButton.onclick = () => {
+             getAIResponse("Це не зовсім те, спробуй, будь ласка, інший варіант.", true);
+        };
+        
+        quickRepliesContainer.appendChild(regenerateButton);
+        quickRepliesContainer.appendChild(postButton);
+    }
+
+    function clearQuickReplies() {
+        quickRepliesContainer.innerHTML = '';
+        quickRepliesContainer.classList.remove('final-actions');
+    }
+});
