@@ -1,8 +1,13 @@
 [build]
+  # This tells Netlify where your serverless functions are located.
   functions = "functions"
+  
+  # THIS IS THE CRITICAL FIX:
+  # It tells Netlify that your index.html is in the main root folder, not a subfolder.
   publish = "."
 
 [[redirects]]
+  # This rule directs all API calls from your frontend to the correct function backend.
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
