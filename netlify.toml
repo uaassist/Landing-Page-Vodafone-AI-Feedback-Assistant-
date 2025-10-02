@@ -1,8 +1,11 @@
 [build]
   functions = "functions"
-  publish = "."
+  publish = "public"
 
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+[functions."responder"]
+  timeout = 26
