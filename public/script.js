@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scheduleCallbackBtn = document.getElementById('schedule-callback-btn');
     const googleReviewFallbackBtn = document.getElementById('google-review-fallback-btn');
 
-    // --- DEFINITIVE FIX: Direct Event Listeners for Welcome/Choice Screens ---
+    // --- Direct Event Listeners for Welcome/Choice Screens ---
     greatBtn.addEventListener('click', () => {
         welcomeScreen.classList.add('hidden');
         choiceScreen.classList.remove('hidden');
@@ -56,8 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(googleReviewUrl, '_blank');
         recoveryScreen.innerHTML = `<h1 class="main-title">Дякуємо!</h1><p class="subtitle">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
     });
-    // --- END OF FIX ---
-
 
     function updateProgressBar(step) {
         const segments = progressContainer.querySelectorAll('.progress-segment');
@@ -207,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createPostButtons() {
         clearQuickReplies();
+        // Add the class for vertical stacking
         quickRepliesContainer.classList.add('final-actions');
 
         const postButton = document.createElement('button');
@@ -229,12 +228,14 @@ document.addEventListener('DOMContentLoaded', () => {
              getAIResponse("Це не зовсім те, спробуй, будь ласка, інший варіант.", true);
         };
         
+        // Append in the desired visual order (top to bottom)
         quickRepliesContainer.appendChild(regenerateButton);
         quickRepliesContainer.appendChild(postButton);
     }
 
     function clearQuickReplies() {
         quickRepliesContainer.innerHTML = '';
+        // Remove the class on cleanup
         quickRepliesContainer.classList.remove('final-actions');
     }
 });
