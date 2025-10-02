@@ -3,347 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Review Assistant для Vodafone Ukraine | Збільште конверсію відгуків на 300%</title>
+    <title>TOBi: AI Feedback Assistant by LikeToMe | Demo for Vodafone Ukraine</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header / Navigation -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo"><img src="https://ucarecdn.com/d7c3d0b9-5fb5-4b03-b090-f428357c1826/Logo_yellow_text.svg" alt="LikeToMe Logo" height="30"></div>
-                <nav>
-                    <a href="#problem">Проблема</a>
-                    <a href="#solution">Рішення</a>
-                    <a href="#roi">ROI</a>
-                    <a href="#implementation">Впровадження</a>
-                </nav>
-                <a href="#final-cta" class="cta-button">Запросити демо</a>
-            </div>
+
+    <nav class="main-nav">
+        <div class="nav-content">
+            <a href="https://www.liketome.com/uk" class="nav-logo">
+                <img src="https://ucarecdn.com/d7c3d0b9-5fb5-4b03-b090-f428357c1826/Logo_yellow_text.svg" alt="LikeToMe Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#case-study">Чому TOBi?</a></li>
+                <li><a href="#game-changer">Переваги методу</a></li>
+                <li><a href="#metrics">Метрики</a></li>
+            </ul>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="nav-cta">
+                Активувати Доступ
+            </a>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content">
-                        <h1>Збільште кількість <span class="highlight">якісних відгуків на 300%</span> без додаткових зусиль</h1>
-                        <p class="subtitle">AI-асистент TOBi, який перетворює просту оцінку у детальний відгук з текстом. Спробуйте самі — почніть розмову прямо зараз.</p>
-                        
-                        <div class="cta-group">
-                            <a href="#solution" class="cta-button">Дізнатись більше</a>
-                            <a href="#roi" class="cta-button cta-button-secondary">Розрахувати ROI</a>
+    <div class="landing-container">
+        <!-- Section 1: The AI-First Hero with Embedded Demo -->
+        <header id="demo" class="hero-section-ai-first">
+            <div class="hero-text-content">
+                <img src="https://ucarecdn.com/4fd935f4-4d3e-409a-a4c7-e12f73f7d4a7/logo.svg" alt="Vodafone Ukraine Logo" class="client-logo">
+                <h1>Відчуйте AI, що пише як людина.</h1>
+                <p class="subtitle">Не читайте про це — спробуйте самі. Почніть розмову з TOBi та подивіться, як він перетворює зворотний зв'язок на ідеальний, автентичний відгук за лічені секунди.</p>
+            </div>
+            <div class="demo-wrapper">
+                <div class="onboarding-container">
+                    <div class="simple-header">
+                         <h1>Vodafone Україна</h1>
+                    </div>
+                    <div class="progress-container hidden" id="progress-container">
+                        <div id="progress-labels">
+                            <span class="progress-label">Мета візиту</span>
+                            <span class="progress-label">Враження</span>
+                            <span class="progress-label">Ваш відгук</span>
                         </div>
-
-                        <div class="hero-stats">
-                            <div class="hero-stat">
-                                <div class="hero-stat-number">+287%</div>
-                                <div class="hero-stat-label">Зростання кількості відгуків</div>
+                        <div id="progress-indicator">
+                            <div class="progress-segment"></div>
+                            <div class="progress-segment"></div>
+                            <div class="progress-segment"></div>
+                        </div>
+                    </div>
+                    <div id="content-area">
+                        <div id="welcome-screen">
+                            <div class="welcome-header">
+                                <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
+                                <p class="concierge-name-tag">Привіт! Я TOBi, ваш ШІ-помічник.</p>
                             </div>
-                            <div class="hero-stat">
-                                <div class="hero-stat-number">10 сек</div>
-                                <div class="hero-stat-label">Середній час на відгук</div>
+                            <div class="initial-bubble">
+                                 Будь ласка, поділіться враженнями про ваш нещодавній візит до магазину.
                             </div>
-                            <div class="hero-stat">
-                                <div class="hero-stat-number">5.2x</div>
-                                <div class="hero-stat-label">Збільшення довжини тексту</div>
+                            <div id="initial-choices" class="initial-choices">
+                                <button id="great-btn" class="choice-button single-line">🙂 Все було чудово!</button>
+                                <button id="okay-btn" class="choice-button single-line">😐 Все було добре.</button>
+                                <button id="bad-btn" class="choice-button single-line">🙁 Були деякі проблеми.</button>
+                            </div>
+                        </div>
+                        <div id="choice-screen" class="hidden">
+                             <div class="welcome-header">
+                                <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
+                                <p class="concierge-name-tag">TOBi</p>
+                            </div>
+                            <div class="initial-bubble">
+                                Чудово! Будь ласка, знайдіть хвилинку, щоб залишити відгук у Google. Я можу допомогти його написати.
+                            </div>
+                            <p class="ukrainian-prompt">Як вам зручніше залишити відгук?</p>
+                            <div class="initial-choices">
+                                <button id="ai-draft-btn" class="choice-button">
+                                    <div class="button-main-text">🤖 TOBi напише чернетку для мене</div>
+                                    <div class="button-sub-text">TOBi пише, ви публікуєте</div>
+                                </button>
+                                <button id="manual-review-btn" class="choice-button">
+                                    <div class="button-main-text">📝 Я напишу відгук самостійно</div>
+                                    <div class="button-sub-text">Відкрити сторінку відгуків Google</div>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="chat-view" class="hidden">
+                            <div id="chat-body" class="chat-body-styled"></div>
+                            <div id="chat-input-area" class="chat-input-area-styled">
+                                <div id="quick-replies-container"></div>
+                            </div>
+                        </div>
+                        <div id="recovery-screen" class="hidden">
+                            <div class="welcome-header">
+                                <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
+                                <p class="concierge-name-tag">TOBi</p>
+                            </div>
+                            <div class="initial-bubble">
+                                Нам дуже шкода це чути. Схоже, ми не виправдали ваших очікувань.
+                            </div>
+                            <p class="ukrainian-prompt">Будь ласка, оберіть, як ми можемо негайно все виправити:</p>
+                            <div class="initial-choices">
+                                <button id="request-assistance-btn" class="choice-button">
+                                    <div class="button-main-text">💬 Зв'язатися з підтримкою</div>
+                                    <div class="button-sub-text">Прямий зв'язок для швидкого вирішення</div>
+                                </button>
+                                <button id="schedule-callback-btn" class="choice-button">
+                                    <div class="button-main-text">🗓️ Замовити дзвінок менеджера</div>
+                                    <div class="button-sub-text">Оберіть зручний час для розмови</div>
+                                </button>
+                            </div>
+                            <div class="google-fallback">
+                                <p>Бажаєте все ж таки залишити публічний відгук?</p>
+                                <button id="google-review-fallback-btn">
+                                    <svg viewBox="0 0 48 48" style="width: 20px; height: 20px; flex-shrink: 0;"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                                    Залишити відгук у Google
+                                </button>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </header>
 
-                    <!-- Fully Integrated Interactive Demo -->
-                    <div class="demo-container">
-                        <div class="onboarding-container">
-                            <div class="simple-header">
-                                <h1>Vodafone Україна</h1>
-                            </div>
-                            <div class="progress-container hidden" id="progress-container">
-                                <div id="progress-labels">
-                                    <span class="progress-label">Мета візиту</span>
-                                    <span class="progress-label">Враження</span>
-                                    <span class="progress-label">Ваш відгук</span>
-                                </div>
-                                <div id="progress-indicator">
-                                    <div class="progress-segment"></div>
-                                    <div class="progress-segment"></div>
-                                    <div class="progress-segment"></div>
-                                </div>
-                            </div>
-                            <div id="content-area">
-                                <div id="welcome-screen">
-                                    <div class="welcome-header">
-                                        <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
-                                        <p class="concierge-name-tag">Привіт! Я TOBi, ваш ШІ-помічник.</p>
-                                    </div>
-                                    <div class="initial-bubble">
-                                        Будь ласка, поділіться враженнями про ваш нещодавній візит до магазину.
-                                    </div>
-                                    <div id="initial-choices" class="initial-choices">
-                                        <button id="great-btn" class="choice-button single-line">🙂 Все було чудово!</button>
-                                        <button id="okay-btn" class="choice-button single-line">😐 Все було добре.</button>
-                                        <button id="bad-btn" class="choice-button single-line">🙁 Були деякі проблеми.</button>
-                                    </div>
-                                </div>
-                                <div id="choice-screen" class="hidden">
-                                    <div class="welcome-header">
-                                        <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
-                                        <p class="concierge-name-tag">TOBi</p>
-                                    </div>
-                                    <div class="initial-bubble">
-                                        Чудово! Будь ласка, знайдіть хвилинку, щоб залишити відгук у Google. Я можу допомогти його написати.
-                                    </div>
-                                    <p class="ukrainian-prompt">Як вам зручніше залишити відгук?</p>
-                                    <div class="initial-choices">
-                                        <button id="ai-draft-btn" class="choice-button">
-                                            <div class="button-main-text">🤖 TOBi напише чернетку для мене</div>
-                                            <div class="button-sub-text">TOBi пише, ви публікуєте</div>
-                                        </button>
-                                        <button id="manual-review-btn" class="choice-button">
-                                            <div class="button-main-text">📝 Я напишу відгук самостійно</div>
-                                            <div class="button-sub-text">Відкрити сторінку відгуків Google</div>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div id="chat-view" class="hidden">
-                                    <div id="chat-body" class="chat-body-styled"></div>
-                                    <div id="chat-input-area" class="chat-input-area-styled">
-                                        <div id="quick-replies-container"></div>
-                                    </div>
-                                </div>
-                                <div id="recovery-screen" class="hidden">
-                                    <div class="welcome-header">
-                                        <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
-                                        <p class="concierge-name-tag">TOBi</p>
-                                    </div>
-                                    <div class="initial-bubble">
-                                        Нам дуже шкода це чути. Схоже, ми не виправдали ваших очікувань.
-                                    </div>
-                                    <p class="ukrainian-prompt">Будь ласка, оберіть, як ми можемо негайно все виправити:</p>
-                                    <div class="initial-choices">
-                                        <button id="request-assistance-btn" class="choice-button">
-                                            <div class="button-main-text">💬 Зв'язатися з підтримкою</div>
-                                            <div class="button-sub-text">Прямий зв'язок для швидкого вирішення</div>
-                                        </button>
-                                        <button id="schedule-callback-btn" class="choice-button">
-                                            <div class="button-main-text">🗓️ Замовити дзвінок менеджера</div>
-                                            <div class="button-sub-text">Оберіть зручний час для розмови</div>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+        <!-- Section 2: The Justification -->
+        <section id="case-study" class="case-study-section">
+            <h2 class="section-headline-red">Чому TOBi — це не просто черговий AI</h2>
+            <div class="case-study-comparison">
+                <div class="case-column">
+                    <h3>ДО впровадження TOBi: Мовчання або Публічний Негатив</h3>
+                    <div class="response-card standard-ai">
+                        <p>Задоволений клієнт мовчить. Незадоволений — залишає 1-зірковий відгук у Google Maps, завдаючи шкоди репутації магазину.</p>
+                        <div class="verdict-analysis error">
+                            <h4>Аналіз Провалу:</h4>
+                            <ul>
+                                <li>
+                                    <span class="icon">❌</span>
+                                    <span class="analysis-label">Втрата позитиву:</span>
+                                    <span class="analysis-description">Щасливі клієнти не мають мотивації залишати відгуки.</span>
+                                </li>
+                                <li>
+                                    <span class="icon">❌</span>
+                                    <span class="analysis-label">Публічний збиток:</span>
+                                    <span class="analysis-description">Негативний досвід миттєво стає публічним.</span>
+                                </li>
+                                <li>
+                                    <span class="icon">❌</span>
+                                    <span class="analysis-label">Нуль аналітики:</span>
+                                    <span class="analysis-description">Ви не знаєте, чому клієнт залишився незадоволеним.</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
+                </div>
+                <div class="case-column">
+                    <h3>ПІСЛЯ: Інтелектуальний Фільтр TOBi</h3>
+                    <div class="response-card liketome-ai">
+                        <p>TOBi автоматично направляє щасливих клієнтів на Google Maps, а незадоволеним пропонує допомогу менеджера, перетворюючи проблему на можливість.</p>
+                        <div class="verdict-analysis success">
+                            <h4>Аналіз Успіху:</h4>
+                            <ul>
+                                <li>
+                                    <span class="icon">✅</span>
+                                    <span class="analysis-label">Максимізація 5★:</span>
+                                    <span class="analysis-description">TOBi генерує автентичні 5-зіркові відгуки, покращуючи SEO.</span>
+                                </li>
+                                <li>
+                                    <span class="icon">✅</span>
+                                    <span class="analysis-label">"Сервісний Файрвол":</span>
+                                    <span class="analysis-description">Негатив перехоплюється до публікації.</span>
+                                </li>
+                                <li>
+                                    <span class="icon">✅</span>
+                                    <span class="analysis-label">Збір аналітики:</span>
+                                    <span class="analysis-description">Система збирає дані про причини візиту та якість сервісу.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Section 3: The "Game-Changer" Explanation -->
+        <section id="game-changer" class="game-changer-section card">
+            <h2 class="section-headline">Не просто AI — це зміна правил гри</h2>
+            <p class="subtitle">TOBi вирішує головну проблему відгуків: "синдром порожньої сторінки". Ми не просто просимо про відгук — ми надаємо послугу, що економить час клієнта.</p>
+            <div class="game-changer-grid">
+                <div class="benefit-item">
+                    <h3>🎯 Вирішення проблеми конверсії</h3>
+                    <p>Ми усуваємо когнітивне навантаження. Завдання клієнта змінюється з "написати відгук" на "схвалити відгук" — це набагато простіше і в рази підвищує конверсію у публікацію.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>✨ Радикальне підвищення якості</h3>
+                    <p>Ви переходите від простих 5-зіркових оцінок до отримання детальних, позитивних історій. Це надпотужний інструмент для SEO та переконання нових клієнтів.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>🔒 Унікальність та відповідність правилам</h3>
+                    <p>Поки конкуренти просять, ви — допомагаєте. Клієнт повністю контролює процес (вводить дані, редагує, публікує), що робить систему прозорою та відповідною до політик платформ.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Problem Section -->
-        <section class="problem-section" id="problem">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-tag">📊 Проблема Ринку</div>
-                    <h2 class="section-title">Ваші задоволені клієнти не залишають відгуки. Ось чому.</h2>
-                    <p class="section-description">Навіть найщасливіші клієнти рідко пишуть детальні відгуки. Причина — не відсутність лояльності, а тертя в процесі.</p>
+        <!-- Section 4: The Solution -->
+        <section id="benefits" class="feature-section card">
+            <h2>Більше ніж AI: Повноцінний Двигун Зворотного Зв'язку</h2>
+            <p>TOBi — це проактивна система, що працює за двома сценаріями, щоб перетворити кожен відгук на актив:</p>
+            <div class="strategic-benefits">
+                <div class="benefit-item">
+                    <h3>Інтелектуальна Воронка</h3>
+                    <p>TOBi допомагає задоволеним клієнтам сформулювати яскравий, детальний 5-зірковий відгук і направляє їх прямо у ваш Google Business Profile.</p>
                 </div>
-                <div class="problem-grid">
-                    <div class="problem-card">
-                        <div class="problem-icon">📝</div>
-                        <h3>Проблема "чистого аркуша"</h3>
-                        <p>Клієнти не знають, що писати. Вони хочуть допомогти, але блокуються перед порожнім полем для тексту.</p>
-                        <div class="problem-stat">93% пропускають поле для тексту</div>
-                    </div>
-                    <div class="problem-card">
-                        <div class="problem-icon">⏱️</div>
-                        <h3>Бар'єр часу та зусиль</h3>
-                        <p>Написання відгуку — це робота. Клієнти готові натиснути 5 зірок, але не готові витрачати 5-10 хвилин на текст.</p>
-                        <div class="problem-stat">Втрата 87% потенційних відгуків</div>
-                    </div>
-                    <div class="problem-card">
-                        <div class="problem-icon">📱</div>
-                        <h3>Незручність мобільних пристроїв</h3>
-                        <p>Більшість запитів на відгук приходять на телефон, де друкувати довгі тексти незручно. Клієнт відкладає "на потім", що означає "ніколи".</p>
-                        <div class="problem-stat">Лише 2% повертаються пізніше</div>
-                    </div>
+                <div class="benefit-item">
+                    <h3>Сервісний Файрвол</h3>
+                    <p>Система фіксує негатив і миттєво пропонує зв'язатися з менеджером, перехоплюючи проблему до того, як вона стане публічною.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Solution Section -->
-        <section class="solution-section" id="solution">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-tag">💡 Наше Рішення</div>
-                    <h2 class="section-title">TOBi: AI, який пише відгуки замість ваших клієнтів</h2>
-                    <p class="section-description">Ми змінюємо завдання з "написати відгук" на "схвалити відгук". Це радикально збільшує конверсію та якість.</p>
+        <!-- Section 5: The Benefits -->
+        <section id="metrics" class="metrics-section">
+            <h2 class="metrics-headline">СТРАТЕГІЧНІ КЛЮЧОВІ МЕТРИКИ</h2>
+            <div class="key-results">
+                <div class="result-item">
+                    <h3>📍 Посилення<br>Локального SEO</h3>
+                    <p>Збільшення кількості якісних 5-зіркових відгуків напряму підвищує видимість ваших магазинів у локальному пошуку.</p>
                 </div>
-                <div class="solution-showcase">
-                    <div class="solution-visual">
-                        <h3>Як це працює:</h3>
-                         <div class="static-demo-visual">
-                             <div class="bubble-user">"Все було чудово!"</div>
-                             <div class="bubble-ai">
-                                <div class="ai-label">✨ TOBi згенерував за 0.3 сек:</div>
-                                "Відмінний сервіс у Vodafone! Допомогли швидко розібратися з тарифом, персонал дуже привітний. Вражений професіоналізмом, рекомендую!"
-                             </div>
-                             <div class="demo-buttons">
-                                <button class="demo-btn edit">✏️ Редагувати</button>
-                                <button class="demo-btn publish">✅ Опублікувати</button>
-                             </div>
-                         </div>
-                    </div>
-                    <div class="solution-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">⚡</div>
-                            <div class="feature-content">
-                                <h3>Миттєва генерація</h3>
-                                <p>TOBi створює персоналізований відгук за 0.3 секунди на основі обраної емоції та історії взаємодії клієнта.</p>
-                                <div class="feature-metric">↑ 1340% вища конверсія</div>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🇺🇦</div>
-                            <div class="feature-content">
-                                <h3>Природна українська мова</h3>
-                                <p>Спеціально навчений на українських відгуках. Створює автентичні тексти, які звучать природно для вашої аудиторії.</p>
-                                <div class="feature-metric">Модель GPT-4 Turbo</div>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">✏️</div>
-                            <div class="feature-content">
-                                <h3>Повний контроль клієнта</h3>
-                                <p>Клієнт може відредагувати будь-яку частину або переписати повністю. Це залишається його справжнім відгуком — AI лише допомагає.</p>
-                                <div class="feature-metric">100% відповідність вимогам Google</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="result-item">
+                    <h3>🛡️ Проактивне<br>Керування Репутацією</h3>
+                    <p>"Сервісний файрвол" перехоплює до 90% потенційних негативних відгуків, захищаючи рейтинг бренду.</p>
+                </div>
+                <div class="result-item">
+                   <h3>📊 Цінна Бізнес-<br>Аналітика</h3>
+                    <p>Отримуйте структуровані дані про сильні та слабкі сторони сервісу в кожній точці продажу.</p>
                 </div>
             </div>
-        </section>
+        </section> 
+         
+        <!-- Section 6: Final CTA -->
+        <footer class="cta-footer">
+            <h3>Готові перетворити зворотний зв'язок на двигун росту?</h3>
+            <p>TOBi — це єдиний AI, що перетворює задоволених клієнтів на ваших промоутерів, а проблеми — на можливості.</p>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="cta-button final-cta">Активувати Безкоштовний Тестовий Доступ</a>
+            <p class="footer-branding">A product by <strong>LikeToMe</strong></p>
+        </footer>
 
-        <!-- ROI Section -->
-        <section class="roi-section" id="roi">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title" style="color: #fff;">Реальний вплив на ваш бізнес</h2>
-                    <p class="section-description" style="color: rgba(255,255,255,0.8);">Дані на основі пілотних запусків у телеком-ритейлі</p>
-                </div>
-                <div class="roi-grid">
-                    <div class="roi-card">
-                        <div class="roi-number">+287%</div>
-                        <div class="roi-label">Більше відгуків з текстом</div>
-                    </div>
-                    <div class="roi-card">
-                        <div class="roi-number">5.2x</div>
-                        <div class="roi-label">Довший текст відгуку</div>
-                    </div>
-                    <div class="roi-card">
-                        <div class="roi-number">4.6 → 4.8★</div>
-                        <div class="roi-label">Вищий середній рейтинг</div>
-                    </div>
-                    <div class="roi-card">
-                        <div class="roi-number">-63%</div>
-                        <div class="roi-label">Менше публічного негативу</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Implementation Section -->
-        <section class="implementation-section" id="implementation">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-tag">🚀 Швидке впровадження</div>
-                    <h2 class="section-title">Від ідеї до результатів за 14 днів</h2>
-                    <p class="section-description">Мінімальне залучення вашої IT-команди. Ми робимо всю важку роботу.</p>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-number">1</div>
-                        <div class="timeline-content">
-                            <h3>Інтеграція API (3-5 днів)</h3>
-                            <p>Підключаємо наш AI до вашої CRM та точок взаємодії (SMS, email, додаток). Надаємо готову документацію та SDK.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-number">2</div>
-                        <div class="timeline-content">
-                            <h3>Кастомізація під бренд (2-3 дні)</h3>
-                            <p>Налаштовуємо тон AI під ваш brand voice, додаємо специфічну термінологію, інтегруємо з вашим дизайном.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-number">3</div>
-                        <div class="timeline-content">
-                            <h3>Пілотний запуск (5-7 днів)</h3>
-                            <p>Запускаємо на 10-15% аудиторії для перевірки метрик та збору зворотного зв'язку. Оптимізуємо на основі даних.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-number">4</div>
-                        <div class="timeline-content">
-                            <h3>Повний запуск (1-2 дні)</h3>
-                            <p>Розгортаємо на всю мережу ритейлу. Навчаємо команду роботі з дашбордом аналітики. Надаємо постійну підтримку.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final CTA Section -->
-        <section class="final-cta" id="final-cta">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Станьте першими в Україні з AI Review Assistant</h2>
-                    <p>Поки конкуренти просять клієнтів залишити відгук — ви будете створювати їх разом з ними. Це не просто більше відгуків. Це нова конкурентна перевага.</p>
-                    <div class="cta-buttons">
-                        <a href="#" class="cta-button" style="font-size: 18px; padding: 18px 45px;">Запланувати демо</a>
-                    </div>
-                    <div class="trust-badges">
-                        <div class="trust-badge"><span class="trust-icon">🔒</span><span>GDPR Compliant</span></div>
-                        <div class="trust-badge"><span class="trust-icon">⚡</span><span>Запуск за 14 днів</span></div>
-                        <div class="trust-badge"><span class="trust-icon">🇺🇦</span><span>Підтримка 24/7</span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>AI Assistant by <span style="color: #E60000;">LikeToMe</span></h3>
-                    <p>Перша в Україні платформа AI-асистованих відгуків для enterprise бізнесу.</p>
-                </div>
-                <div class="footer-column">
-                    <h4>Продукт</h4>
-                    <a href="#solution">Як працює</a>
-                    <a href="#roi">ROI калькулятор</a>
-                    <a href="#implementation">Впровадження</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Ресурси</h4>
-                    <a href="#">Документація API</a>
-                    <a href="#">Кейс-стаді</a>
-                    <a href="#">Підтримка</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Компанія</h4>
-                    <a href="#">Про нас</a>
-                    <a href="#">Контакти</a>
-                    <a href="#">Політика конфіденційності</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 LikeToMe. Створено в Україні.</p>
-            </div>
-        </div>
-    </footer>
-
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
