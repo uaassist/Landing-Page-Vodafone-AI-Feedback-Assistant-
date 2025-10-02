@@ -46,18 +46,26 @@ exports.handler = async function (event) {
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`, },
+      headers: { 
+        'Content-Type': 'application/json', 
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`, // This line was causing the crash
+      },
       body: JSON.stringify({
         model: 'gpt-4-turbo',
         messages: [ { role: 'system', content: systemPrompt }, ...messages ],
         temperature: 0.75,
       }),
     });
-    if (!response.ok) { throw new Error("OpenAI API request failed."); }
+    if (!response.ok) { 
+        const errorData = await response.json(); 
+        console.error("OpenAI API Error:", errorData); 
+        throw new Error("OpenAI API request failed."); 
+    }
     const data = await response.json();
     const aiMessage = data.choices[0].message;
     return { statusCode: 200, body: JSON.stringify({ message: aiMessage }), };
   } catch (error) {
+    console.error("Error calling OpenAI API:", error);
     return { statusCode: 500, body: JSON.stringify({ error: "AI service is currently unavailable." }), };
   }
 };
