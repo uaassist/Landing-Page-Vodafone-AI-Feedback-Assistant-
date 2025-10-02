@@ -28,7 +28,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Target all the card elements we want to animate
-document.querySelectorAll('.problem-card, .feature-item, .roi-card, .timeline-item').forEach(el => {
+document.querySelectorAll('.problem-card, .feature-item, .roi-card, .timeline-item, .solution-step').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'all 0.6s ease-out';
@@ -275,3 +275,12 @@ document.addEventListener('DOMContentLoaded', () => {
         quickRepliesContainer.classList.remove('final-actions');
     }
 });
+
+
+
+
+
+
+
+
+
