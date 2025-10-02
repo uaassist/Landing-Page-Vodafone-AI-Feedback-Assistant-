@@ -1,3 +1,42 @@
+// --- SMOOTH SCROLLING FOR NAV LINKS ---
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// --- SCROLL-IN ANIMATIONS ---
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Target all the card elements we want to animate
+document.querySelectorAll('.problem-card, .feature-item, .roi-card, .timeline-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.6s ease-out';
+    observer.observe(el);
+});
+
+
+// --- INTERACTIVE CHAT DEMO LOGIC ---
 document.addEventListener('DOMContentLoaded', () => {
     // --- Element selectors for all views ---
     const welcomeScreen = document.getElementById('welcome-screen');
