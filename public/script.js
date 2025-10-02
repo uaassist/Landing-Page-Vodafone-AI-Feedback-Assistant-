@@ -152,25 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
         addMessage('concierge', question, false, true);
         if (question.includes("мета вашого візиту")) {
             updateProgressBar(1);
-            // DEFINITIVE FIX: Restored the full 5 options
-            const purposeOptions = [
-                "📱 Новий телефон/пристрій", 
-                "🔄 Зміна/оновлення тарифу", 
-                "🔧 Технічна підтримка", 
-                "💳 Оплата рахунку", 
-                "👤 Реєстрація нового номера" // ADDED
-            ];
+            const purposeOptions = [ "📱 Новий телефон/пристрій", "🔄 Зміна/оновлення тарифу", "🔧 Технічна підтримка", "💳 Оплата рахунку", "👤 Реєстрація нового номера" ];
             createMultiSelectButtons(purposeOptions);
         } else if (question.includes("враження від обслуговування")) {
             updateProgressBar(2);
-            // DEFINITIVE FIX: Restored the full 5 options
-            const experienceOptions = [
-                "⭐ Компетентні працівники", 
-                "💨 Швидке обслуговування", 
-                "🏬 Чистота в магазині", // ADDED
-                "👍 Простий процес", 
-                "🤝 Проблему вирішено"
-            ];
+            const experienceOptions = [ "⭐ Компетентні працівники", "💨 Швидке обслуговування", "🏬 Чистота в магазині", "👍 Простий процес", "🤝 Проблему вирішено" ];
             createMultiSelectButtons(experienceOptions);
         }
     }
@@ -213,6 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createPostButtons() {
         clearQuickReplies();
+        // DEFINITIVE FIX: Add a class to the container for specific styling
+        quickRepliesContainer.classList.add('final-actions');
+
         const postButton = document.createElement('button');
         postButton.className = 'quick-reply-btn primary-action choice-button'; 
         postButton.innerHTML = `
@@ -228,15 +217,4 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         const regenerateButton = document.createElement('button');
         regenerateButton.className = 'quick-reply-btn';
-        regenerateButton.innerText = '🔄 Інша версія';
-        regenerateButton.onclick = () => {
-             getAIResponse("Це не зовсім те, спробуй, будь ласка, інший варіант.", true);
-        };
-        quickRepliesContainer.appendChild(regenerateButton);
-        quickRepliesContainer.appendChild(postButton);
-    }
-
-    function clearQuickReplies() {
-        quickRepliesContainer.innerHTML = '';
-    }
-});
+        regenerateButton.innerText = '🔄
