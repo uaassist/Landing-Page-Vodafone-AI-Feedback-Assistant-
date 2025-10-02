@@ -23,36 +23,49 @@ document.addEventListener('DOMContentLoaded', () => {
         welcomeScreen.classList.add('hidden');
         choiceScreen.classList.remove('hidden');
     });
+
     okayBtn.addEventListener('click', () => {
         welcomeScreen.classList.add('hidden');
         recoveryScreen.classList.remove('hidden');
     });
+
     badBtn.addEventListener('click', () => {
         welcomeScreen.classList.add('hidden');
         recoveryScreen.classList.remove('hidden');
     });
+
     aiDraftBtn.addEventListener('click', () => {
         choiceScreen.classList.add('hidden');
         startConversation("Все було чудово!");
     });
+
     manualReviewBtn.addEventListener('click', () => {
         window.open(googleReviewUrl, '_blank');
         choiceScreen.innerHTML = `<h1 class="main-title">Дякуємо!</h1><p class="subtitle">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
     });
+
     requestAssistanceBtn.addEventListener('click', () => {
         alert('Перенаправлення до чату підтримки...');
     });
+
     scheduleCallbackBtn.addEventListener('click', () => {
         alert('Перенаправлення на сторінку планування дзвінка...');
     });
+    
     googleReviewFallbackBtn.addEventListener('click', () => {
         window.open(googleReviewUrl, '_blank');
         recoveryScreen.innerHTML = `<h1 class="main-title">Дякуємо!</h1><p class="subtitle">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
     });
 
     function updateProgressBar(step) {
-        progressContainer.querySelectorAll('.progress-segment').forEach((s, i) => s.classList.toggle('active', i < step));
-        progressContainer.querySelectorAll('.progress-label').forEach((l, i) => l.classList.toggle('active', i === step - 1));
+        const segments = progressContainer.querySelectorAll('.progress-segment');
+        segments.forEach((segment, index) => {
+            segment.classList.toggle('active', index < step);
+        });
+        const labels = progressContainer.querySelectorAll('.progress-label');
+        labels.forEach((label, index) => {
+            label.classList.toggle('active', index === step - 1);
+        });
     }
 
     function startConversation(firstMessage) {
@@ -62,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let conversationHistory = [];
-    const placeId = 'Your_Google_Place_ID_Here';
+    const placeId = 'Your_Google_Place_ID_Here'; // Replace with actual Place ID
     const googleReviewUrl = `https://search.google.com/local/writereview?placeid=${placeId}`;
     const avatarUrl = 'https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp';
 
@@ -122,9 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function processAIResponse(text) {
         removeTypingIndicator();
         if (text.includes("|")) {
-            const [statement, question] = text.split('|');
+            const parts = text.split('|');
+            const statement = parts[0].trim();
+            const question = parts[1].trim();
+            
             addMessage('concierge', statement, false, false);
-            handleQuestion(question.trim());
+            handleQuestion(question);
         } else {
             const quoteRegex = /"(.*?)"/s;
             const matches = text.match(quoteRegex);
@@ -181,51 +197,45 @@ document.addEventListener('DOMContentLoaded', () => {
         continueButton.onclick = () => {
             const selectedButtons = quickRepliesContainer.querySelectorAll('.quick-reply-btn.selected');
             const selectedKeywords = Array.from(selectedButtons).map(btn => btn.innerText);
-            getAIResponse(selectedKeywords.join(', ') || "Нічого конкретного не виділено");
+            let combinedMessage = selectedKeywords.length > 0 ? selectedKeywords.join(', ') : "Нічого конкретного не виділено";
+            getAIResponse(combinedMessage);
         };
         quickRepliesContainer.appendChild(continueButton);
     }
 
-    // DEFINITIVE FIX: Rewritten to match the new design screenshot
     function createPostButtons() {
         clearQuickReplies();
+        quickRepliesContainer.classList.add('final-actions');
+
+        // DEFINITIVE FIX: Primary button now uses the .continue-btn style
+        const postButton = document.createElement('button');
+        postButton.className = 'quick-reply-btn continue-btn'; 
+        postButton.innerText = '✅ Відкрити Google та опублікувати'; // Simplified text
         
+        postButton.onclick = () => {
+            const draftText = document.getElementById('review-draft-textarea').value;
+            navigator.clipboard.writeText(draftText);
+            window.open(googleReviewUrl, '_blank');
+            clearQuickReplies();
+            addMessage('concierge', "Дякуємо за ваш відгук! Ваш відгук скопійовано — просто вставте його у Google.");
+        };
+
+        // DEFINITIVE FIX: Secondary button uses the default .quick-reply-btn style
         const regenerateButton = document.createElement('button');
         regenerateButton.className = 'quick-reply-btn';
-        regenerateButton.innerHTML = `
-            <div class="final-button-content">
-                <svg class="icon-regenerate" viewBox="0 0 24 24" width="24" height="24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"></path></svg>
-                <span>Інша версія</span>
-            </div>
-        `;
+        regenerateButton.innerText = '🔄 Інша версія';
+
         regenerateButton.onclick = () => {
              getAIResponse("Це не зовсім те, спробуй, будь ласка, інший варіант.", true);
         };
         
-        const postButton = document.createElement('button');
-        postButton.className = 'quick-reply-btn primary-action'; 
-        postButton.innerHTML = `
-            <div class="final-button-content column">
-                <div class="main-text-with-icon">
-                    <svg class="icon-checkmark" viewBox="0 0 24 24" width="24" height="24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path></svg>
-                    <span class="button-main-text">Відкрити Google для публікації</span>
-                </div>
-                <span class="button-sub-text">Ваш відгук скопійовано — просто вставте та оцініть</span>
-            </div>
-        `;
-        postButton.onclick = () => {
-            const draftText = document.getElementById('review-draft-textarea').value;
-            window.open(googleReviewUrl, '_blank');
-            navigator.clipboard.writeText(draftText);
-            clearQuickReplies();
-            addMessage('concierge', "Дякуємо за ваш відгук!");
-        };
-        
+        // Buttons are appended in the desired visual order (top to bottom)
         quickRepliesContainer.appendChild(regenerateButton);
         quickRepliesContainer.appendChild(postButton);
     }
 
     function clearQuickReplies() {
         quickRepliesContainer.innerHTML = '';
+        quickRepliesContainer.classList.remove('final-actions');
     }
 });
