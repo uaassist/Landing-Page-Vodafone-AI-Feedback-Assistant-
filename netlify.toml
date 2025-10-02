@@ -1,7 +1,7 @@
 [build]
   functions = "functions"
-  # This tells Netlify your index.html is in the main root folder. THIS IS THE FIX.
-  publish = "."
+  # This tells Netlify to look inside the "public" folder for your website.
+  publish = "public"
 
 [[redirects]]
   from = "/api/*"
