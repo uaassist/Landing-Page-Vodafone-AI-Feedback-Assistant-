@@ -207,10 +207,9 @@ document.addEventListener('DOMContentLoaded', () => {
         clearQuickReplies();
         quickRepliesContainer.classList.add('final-actions');
 
-        // DEFINITIVE FIX: Primary button now uses the .continue-btn style
         const postButton = document.createElement('button');
         postButton.className = 'quick-reply-btn continue-btn'; 
-        postButton.innerText = '✅ Відкрити Google та опублікувати'; // Simplified text
+        postButton.innerText = '✅ Відкрити Google та опублікувати';
         
         postButton.onclick = () => {
             const draftText = document.getElementById('review-draft-textarea').value;
@@ -220,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
             addMessage('concierge', "Дякуємо за ваш відгук! Ваш відгук скопійовано — просто вставте його у Google.");
         };
 
-        // DEFINITIVE FIX: Secondary button uses the default .quick-reply-btn style
         const regenerateButton = document.createElement('button');
         regenerateButton.className = 'quick-reply-btn';
         regenerateButton.innerText = '🔄 Інша версія';
@@ -229,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
              getAIResponse("Це не зовсім те, спробуй, будь ласка, інший варіант.", true);
         };
         
-        // Buttons are appended in the desired visual order (top to bottom)
         quickRepliesContainer.appendChild(regenerateButton);
         quickRepliesContainer.appendChild(postButton);
     }
