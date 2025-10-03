@@ -4,9 +4,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            // Adjust for sticky header height if needed
+            const headerOffset = 80; 
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
             });
         }
     });
@@ -18,11 +23,12 @@ const observerOptions = {
     rootMargin: '0px 0px -100px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target); // Stop observing after animation
         }
     });
 }, observerOptions);
@@ -31,13 +37,18 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.problem-card, .feature-item, .roi-card, .timeline-item, .solution-step').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s ease-out';
+    el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     observer.observe(el);
 });
 
 
 // --- INTERACTIVE CHAT DEMO LOGIC ---
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if the demo elements exist before running the script
+    if (!document.getElementById('welcome-screen')) {
+        return;
+    }
+
     // --- Element selectors for all views ---
     const welcomeScreen = document.getElementById('welcome-screen');
     const choiceScreen = document.getElementById('choice-screen');
@@ -80,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     manualReviewBtn.addEventListener('click', () => {
         window.open(googleReviewUrl, '_blank');
-        choiceScreen.innerHTML = `<h1 class="main-title">Дякуємо!</h1><p class="subtitle">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
+        choiceScreen.innerHTML = `<h3 style="color: #1d1d1f; text-align: center;">Дякуємо!</h3><p style="color: #52525b; text-align: center;">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
     });
 
     requestAssistanceBtn.addEventListener('click', () => {
@@ -93,10 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     googleReviewFallbackBtn.addEventListener('click', () => {
         window.open(googleReviewUrl, '_blank');
-        recoveryScreen.innerHTML = `<h1 class="main-title">Дякуємо!</h1><p class="subtitle">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
+        recoveryScreen.innerHTML = `<h3 style="color: #1d1d1f; text-align: center;">Дякуємо!</h3><p style="color: #52525b; text-align: center;">Ми відкрили сторінку відгуків Google у новій вкладці.</p>`;
     });
 
     function updateProgressBar(step) {
+        if (!progressContainer) return;
         const segments = progressContainer.querySelectorAll('.progress-segment');
         segments.forEach((segment, index) => {
             segment.classList.toggle('active', index < step);
@@ -109,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startConversation(firstMessage) {
         chatView.classList.remove('hidden');
-        progressContainer.classList.remove('hidden');
+        if (progressContainer) progressContainer.classList.remove('hidden');
         getAIResponse(firstMessage);
     }
 
@@ -137,8 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function getAIResponse(userMessage) {
-        addMessage('user', userMessage);
-        conversationHistory.push({ role: 'user', content: userMessage });
+        if (userMessage) {
+            addMessage('user', userMessage);
+            conversationHistory.push({ role: 'user', content: userMessage });
+        }
         clearQuickReplies();
         showTypingIndicator();
         try {
@@ -154,7 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
             processAIResponse(aiMessage.content);
         } catch (error) {
             console.error("Fetch Error:", error);
-            processAIResponse("Вибачте, виникла проблема. Спробуйте, будь ласка, пізніше.");
+            removeTypingIndicator();
+            addMessage('concierge', "Вибачте, виникла проблема. Спробуйте, будь ласка, пізніше.");
         }
     }
     
@@ -275,12 +290,3 @@ document.addEventListener('DOMContentLoaded', () => {
         quickRepliesContainer.classList.remove('final-actions');
     }
 });
-
-
-
-
-
-
-
-
-
