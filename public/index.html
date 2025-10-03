@@ -121,34 +121,28 @@
 
                 <div class="solution-grid">
                     <div class="demo-wrapper">
-                        <!-- This container holds all the different screens of the chat demo -->
                         <div id="content-area">
                             <!-- Welcome Screen (Visible by default) -->
                             <div id="welcome-screen">
-                                <div class="demo-header" style="margin-bottom: 0;">
-                                    <div class="demo-title">Vodafone Україна</div>
-                                </div>
                                 <div class="welcome-header">
-                                    <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
-                                    <p class="concierge-name-tag">Привіт! Я TOBi, ваш ШІ-помічник.</p>
+                                    <img src="https://ucarecdn.com/e795f48d-2dce-4417-9190-233633d451a5/Tobi_Avatar_Red.svg" alt="Асистент TOBi" class="welcome-avatar">
+                                    <p class="concierge-name-tag">TOBi</p>
                                 </div>
                                 <div class="initial-bubble">
-                                    Будь ласка, поділіться враженнями про ваш нещодавній візит до магазину.
+                                    Чудово! Будь ласка, знайдіть хвилинку, щоб залишити відгук у Google. Я можу допомогти його написати.
                                 </div>
+                                <p class="ukrainian-prompt">Як вам зручніше залишити відгук?</p>
                                 <div id="initial-choices" class="initial-choices">
                                     <button id="great-btn" class="choice-button">🙂 Все було чудово!</button>
                                     <button id="okay-btn" class="choice-button">😐 Все було добре.</button>
                                     <button id="bad-btn" class="choice-button">🙁 Були деякі проблеми.</button>
                                 </div>
                             </div>
-
+                            
                             <!-- Choice Screen (Hidden) -->
                             <div id="choice-screen" class="hidden">
-                                <div class="demo-header" style="margin-bottom: 0;">
-                                    <div class="demo-title">Vodafone Україна</div>
-                                </div>
                                 <div class="welcome-header">
-                                    <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
+                                    <img src="https://ucarecdn.com/e795f48d-2dce-4417-9190-233633d451a5/Tobi_Avatar_Red.svg" alt="Асистент TOBi" class="welcome-avatar">
                                     <p class="concierge-name-tag">TOBi</p>
                                 </div>
                                 <div class="initial-bubble">
@@ -157,17 +151,23 @@
                                 <p class="ukrainian-prompt">Як вам зручніше залишити відгук?</p>
                                 <div class="initial-choices">
                                     <button id="ai-draft-btn" class="choice-button two-line">
-                                        <div class="button-main-text">🤖 TOBi напише чернетку для мене</div>
-                                        <div class="button-sub-text">TOBi пише, ви публікуєте</div>
+                                        <span class="button-icon">🤖</span>
+                                        <div>
+                                            <div class="button-main-text">TOBi напише чернетку для мене</div>
+                                            <div class="button-sub-text">TOBi пише, ви публікуєте</div>
+                                        </div>
                                     </button>
                                     <button id="manual-review-btn" class="choice-button two-line">
-                                        <div class="button-main-text">📝 Я напишу відгук самостійно</div>
-                                        <div class="button-sub-text">Відкрити сторінку відгуків Google</div>
+                                        <span class="button-icon">📝</span>
+                                        <div>
+                                            <div class="button-main-text">Я напишу відгук самостійно</div>
+                                            <div class="button-sub-text">Відкрити сторінку відгуків Google</div>
+                                        </div>
                                     </button>
                                 </div>
                             </div>
-                            
-                            <!-- Chat View (Hidden) -->
+
+                            <!-- Chat View (Hidden) - a container for the dynamic chat UI -->
                             <div id="chat-view" class="hidden">
                                 <div class="simple-header"><h1>Vodafone Україна</h1></div>
                                 <div class="progress-container" id="progress-container">
@@ -190,11 +190,8 @@
 
                             <!-- Recovery Screen (Hidden) -->
                             <div id="recovery-screen" class="hidden">
-                                <div class="demo-header" style="margin-bottom: 0;">
-                                    <div class="demo-title">Vodafone Україна</div>
-                                </div>
                                 <div class="welcome-header">
-                                    <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
+                                    <img src="https://ucarecdn.com/e795f48d-2dce-4417-9190-233633d451a5/Tobi_Avatar_Red.svg" alt="Асистент TOBi" class="welcome-avatar">
                                     <p class="concierge-name-tag">TOBi</p>
                                 </div>
                                 <div class="initial-bubble">
@@ -203,12 +200,18 @@
                                 <p class="ukrainian-prompt">Будь ласка, оберіть, як ми можемо негайно все виправити:</p>
                                 <div class="initial-choices">
                                     <button id="request-assistance-btn" class="choice-button two-line">
-                                        <div class="button-main-text">💬 Зв'язатися з підтримкою</div>
-                                        <div class="button-sub-text">Прямий зв'язок для швидкого вирішення</div>
+                                        <span class="button-icon">💬</span>
+                                        <div>
+                                            <div class="button-main-text">Зв'язатися з підтримкою</div>
+                                            <div class="button-sub-text">Прямий зв'язок для швидкого вирішення</div>
+                                        </div>
                                     </button>
                                     <button id="schedule-callback-btn" class="choice-button two-line">
-                                        <div class="button-main-text">🗓️ Замовити дзвінок менеджера</div>
-                                        <div class="button-sub-text">Оберіть зручний час для розмови</div>
+                                        <span class="button-icon">🗓️</span>
+                                        <div>
+                                            <div class="button-main-text">Замовити дзвінок менеджера</div>
+                                            <div class="button-sub-text">Оберіть зручний час для розмови</div>
+                                        </div>
                                     </button>
                                 </div>
                                 <div class="google-fallback">
