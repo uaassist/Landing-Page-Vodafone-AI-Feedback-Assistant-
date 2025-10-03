@@ -10,6 +10,8 @@
     --card-background: rgba(31, 41, 55, 0.5);
     --card-hover-background: rgba(42, 54, 71, 0.7);
     --border-color: rgba(255, 255, 255, 0.1);
+    --metric-bg: rgba(52, 211, 153, 0.1);
+    --metric-text: #34D399;
 }
 
 /* --- Base Styles --- */
@@ -19,6 +21,7 @@ body {
     color: var(--text-light);
     margin: 0;
     line-height: 1.6;
+    scroll-behavior: smooth;
 }
 .container {
     max-width: 1100px;
@@ -126,6 +129,14 @@ header {
 .problem-card h3, .roi-card h3 { margin-bottom: 10px; }
 .problem-stat, .roi-stat { margin-top: 20px; font-weight: 700; color: var(--vodafone-red); }
 
+/* --- Solution Section Steps --- */
+.solution-steps { max-width: 700px; margin: 60px auto 50px; display: flex; flex-direction: column; gap: 40px; }
+.solution-step { display: grid; grid-template-columns: max-content 1fr; gap: 25px; align-items: start; }
+.step-number-circle { width: 40px; height: 40px; background-color: var(--vodafone-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: white; }
+.step-content h3 { margin: 0 0 10px 0; font-size: 22px; }
+.step-content p { margin: 0 0 15px 0; color: var(--text-dark-secondary); }
+.step-metric { display: inline-block; background-color: var(--metric-bg); color: var(--metric-text); padding: 6px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+
 /* --- Features Grid (Solution) --- */
 .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
 .feature-item { background-color: var(--card-background); backdrop-filter: blur(5px); border: 1px solid var(--border-color); display: flex; align-items: flex-start; gap: 20px; padding: 25px; border-radius: 16px; transition: all 0.3s ease; }
@@ -223,3 +234,14 @@ footer { background-color: #0c1221; border-top: 1px solid var(--border-color); p
     .footer-content { grid-template-columns: 1fr; }
     .header-content nav { display: none; }
 }
+
+
+
+
+
+
+
+
+
+
+
