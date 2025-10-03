@@ -121,12 +121,16 @@
 
                 <div class="solution-grid">
                     <div class="demo-wrapper">
+                        <!-- This container holds all the different screens of the chat demo -->
                         <div id="content-area">
-                            <!-- Welcome Screen -->
+                            <!-- Welcome Screen (Visible by default) -->
                             <div id="welcome-screen">
+                                <div class="demo-header" style="margin-bottom: 0;">
+                                    <div class="demo-title">Vodafone Україна</div>
+                                </div>
                                 <div class="welcome-header">
                                     <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
-                                    <p class="concierge-name-tag">TOBi</p>
+                                    <p class="concierge-name-tag">Привіт! Я TOBi, ваш ШІ-помічник.</p>
                                 </div>
                                 <div class="initial-bubble">
                                     Будь ласка, поділіться враженнями про ваш нещодавній візит до магазину.
@@ -140,6 +144,9 @@
 
                             <!-- Choice Screen (Hidden) -->
                             <div id="choice-screen" class="hidden">
+                                <div class="demo-header" style="margin-bottom: 0;">
+                                    <div class="demo-title">Vodafone Україна</div>
+                                </div>
                                 <div class="welcome-header">
                                     <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
                                     <p class="concierge-name-tag">TOBi</p>
@@ -150,18 +157,12 @@
                                 <p class="ukrainian-prompt">Як вам зручніше залишити відгук?</p>
                                 <div class="initial-choices">
                                     <button id="ai-draft-btn" class="choice-button two-line">
-                                        <img src="https://ucarecdn.com/3d037139-f9c1-4225-83a3-f0f7f348728d/" alt="robot icon" class="choice-icon">
-                                        <div>
-                                            <div class="button-main-text">TOBi напише чернетку для мене</div>
-                                            <div class="button-sub-text">TOBi пише, ви публікуєте</div>
-                                        </div>
+                                        <div class="button-main-text">🤖 TOBi напише чернетку для мене</div>
+                                        <div class="button-sub-text">TOBi пише, ви публікуєте</div>
                                     </button>
                                     <button id="manual-review-btn" class="choice-button two-line">
-                                        <img src="https://ucarecdn.com/1c8325a7-19f6-4927-a035-7c9842a27546/" alt="pencil icon" class="choice-icon">
-                                        <div>
-                                            <div class="button-main-text">Я напишу відгук самостійно</div>
-                                            <div class="button-sub-text">Відкрити сторінку відгуків Google</div>
-                                        </div>
+                                        <div class="button-main-text">📝 Я напишу відгук самостійно</div>
+                                        <div class="button-sub-text">Відкрити сторінку відгуків Google</div>
                                     </button>
                                 </div>
                             </div>
@@ -189,6 +190,9 @@
 
                             <!-- Recovery Screen (Hidden) -->
                             <div id="recovery-screen" class="hidden">
+                                <div class="demo-header" style="margin-bottom: 0;">
+                                    <div class="demo-title">Vodafone Україна</div>
+                                </div>
                                 <div class="welcome-header">
                                     <img src="https://ucarecdn.com/c679e989-5032-408b-ae8a-83c7d204c67d/Vodafonebot.webp" alt="Асистент TOBi" class="welcome-avatar">
                                     <p class="concierge-name-tag">TOBi</p>
